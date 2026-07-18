@@ -246,7 +246,7 @@ public class EntityWorldStateManager {
                     this.entity.getEntityId(),
                     this.entity.getUuid(),
                     this.worldState.asLocation(),
-                    this.entity.getMeta().entityData(this.entity.getDataVersion())
+                    this.entity.getMeta().entityData(this.entity.getDataVersion().toClientVersion())
             );
         }
 
@@ -297,7 +297,7 @@ public class EntityWorldStateManager {
                         this.worldState.currentPitch(),
                         this.worldState.currentVerticalHeadRot(),
                         velocity != null ? velocity : Vector3d.zero(),
-                        this.entity.getMeta().entityData(this.entity.getDataVersion())
+                        this.entity.getMeta().entityData(this.entity.getDataVersion().toClientVersion())
                 );
             }
         }
