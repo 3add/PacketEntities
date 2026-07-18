@@ -61,38 +61,41 @@ for spawning a player entity
 Location loc = /*...*/;
 UUID uuid = UUID.randomUUID();
 ProtocolEntity entity = ProtocolEntity.builder()
-    .entityType(EntityTypes.PLAYER)
-    .extensions(extensions -> extensions
-            .extension(new PlayerExtension(
-                    new UserProfile(uuid, "notch"),
-                    GameMode.CREATIVE,
-                    67,
-                    true,
-                    Component.text("Notch", NamedTextColor.GREEN)
-            )))
-    .viewers(viewers -> viewers
-            .viewers(Bukkit.getOnlinePlayers().stream().map(Player::getUniqueId).toList())
-    )
-    .meta(meta -> {
-        meta.get(PlayerMetaProperties.SHARED_FLAGS).setGlowing(true);
-        meta.set(PlayerMetaProperties.SCORE, 200);
-        meta.set(PlayerMetaProperties.POSE, EntityPose.SITTING);
-    })
-    .uuid(uuid)
-    .velocity(new Vector3d(1, 1, 1))
-    .version(PacketEvents.getAPI().getServerManager().getVersion().toClientVersion())
-    .buildAndSpawn(ProtocolWorld.of(loc.getWorld().getName()), loc);
+        .entityType(EntityTypes.PLAYER)
+        .extensions(extensions -> extensions
+                .extension(new PlayerExtension(
+                        new UserProfile(uuid, "notch"),
+                        GameMode.CREATIVE,
+                        67,
+                        true,
+                        Component.text("Notch", NamedTextColor.GREEN)
+                ))
+                .extension(new TickExtension())
+                .extension(new TickVelocityExtension())
+        )
+        .viewers(viewers -> viewers
+                .viewers(Bukkit.getOnlinePlayers().stream().map(Player::getUniqueId).toList())
+        )
+        .meta(meta -> {
+            meta.get(EntityMetaFields.Player.SHARED_FLAGS).setGlowing(true);
+            meta.set(EntityMetaFields.Player.SCORE, 200);
+            meta.set(EntityMetaFields.Player.POSE, EntityPose.SITTING);
+        })
+        .uuid(uuid)
+        .velocity(new Vector3d(1, 1, 1))
+        .version(PacketEvents.getAPI().getServerManager().getVersion().toClientVersion())
+        .buildAndSpawn(ProtocolWorld.of(loc.getWorld().getName()), loc);
 ```
 ### Meta
 from packet
 ```java
 WrapperPlayServerEntityMetadata metadataPacket = /*...*/;
-EntityMetadata metadata = new EntityMetadata(/*...*/); // provided you know the entity type of the packet's data
+ProtocolEntityMeta metadata = new ProtocolEntityMeta(/*...*/); // provided you know the entity type of the packet's data
 metadata.setDataFromPacket(metadataPacket);
 ```
 to packet
 ```java
-EntityMetadata metadata = /*...*/;
+ProtocolEntityMeta metadata = /*...*/;
 int entityId = /*...*/;
 ClientVersion version = PacketEvents.getAPI().getServerManager().getVersion().toClientVersion();
 WrapperPlayServerEntityMetadata metadataPacket = metadata.createPacket(entityId, version);
