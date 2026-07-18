@@ -23,7 +23,7 @@ public class PaperWorldProvider implements WorldProvider<World> {
 
     @Override
     public ProtocolWorld provideMainWorld() {
-        return ProtocolWorld.of(Bukkit.getWorlds().getFirst().getName());
+        return ProtocolWorld.of(Bukkit.getWorlds().get(0).getName());
     }
 
 }

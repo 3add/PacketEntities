@@ -33,7 +33,7 @@ public abstract class EntityPacketPipelineEvent extends CancellableEvent {
      * @return this event for chaining
      */
     public EntityPacketPipelineEvent addPacketFirst(PacketWrapper<?> packet) {
-        this.packets.addFirst(packet);
+        this.packets.add(0, packet);
         return this;
     }
 

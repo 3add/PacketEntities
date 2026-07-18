@@ -8,27 +8,118 @@ import dev.threeadd.packetentities.world.ProtocolWorld;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
+// record class, converted to java 8
 /**
  * Represents a tracked {@link ProtocolEntity}'s state, this is used to determine whether a sync is needed
  * and has some nice utility methods
  */
 @ApiStatus.Internal
-public record EntityWorldState(
-        Vector3d currentPos,
-        @Nullable Vector3d lastSyncedPos,
-        float currentYaw,
-        @Nullable Float lastSyncedYaw,
-        float currentPitch,
-        @Nullable Float lastSyncedPitch,
-        float currentVerticalHeadRot,
-        @Nullable Float lastSyncedVerticalHeadRot,
-        boolean currentOnGround,
-        @Nullable Boolean lastSyncedOnGround,
-        @Nullable Vector3d currentVelocity,
-        @Nullable Vector3d lastSyncedVelocity,
-        ProtocolWorld currentWorld,
-        @Nullable ProtocolWorld lastSyncedWorld
-) {
+public final class EntityWorldState {
+
+    private final Vector3d currentPos;
+    private final @Nullable Vector3d lastSyncedPos;
+    private final float currentYaw;
+    private final @Nullable Float lastSyncedYaw;
+    private final float currentPitch;
+    private final @Nullable Float lastSyncedPitch;
+    private final float currentVerticalHeadRot;
+    private final @Nullable Float lastSyncedVerticalHeadRot;
+    private final boolean currentOnGround;
+    private final @Nullable Boolean lastSyncedOnGround;
+    private final @Nullable Vector3d currentVelocity;
+    private final @Nullable Vector3d lastSyncedVelocity;
+    private final ProtocolWorld currentWorld;
+    private final @Nullable ProtocolWorld lastSyncedWorld;
+
+    public EntityWorldState(
+            Vector3d currentPos,
+            @Nullable Vector3d lastSyncedPos,
+            float currentYaw,
+            @Nullable Float lastSyncedYaw,
+            float currentPitch,
+            @Nullable Float lastSyncedPitch,
+            float currentVerticalHeadRot,
+            @Nullable Float lastSyncedVerticalHeadRot,
+            boolean currentOnGround,
+            @Nullable Boolean lastSyncedOnGround,
+            @Nullable Vector3d currentVelocity,
+            @Nullable Vector3d lastSyncedVelocity,
+            ProtocolWorld currentWorld,
+            @Nullable ProtocolWorld lastSyncedWorld
+    ) {
+        this.currentPos = currentPos;
+        this.lastSyncedPos = lastSyncedPos;
+        this.currentYaw = currentYaw;
+        this.lastSyncedYaw = lastSyncedYaw;
+        this.currentPitch = currentPitch;
+        this.lastSyncedPitch = lastSyncedPitch;
+        this.currentVerticalHeadRot = currentVerticalHeadRot;
+        this.lastSyncedVerticalHeadRot = lastSyncedVerticalHeadRot;
+        this.currentOnGround = currentOnGround;
+        this.lastSyncedOnGround = lastSyncedOnGround;
+        this.currentVelocity = currentVelocity;
+        this.lastSyncedVelocity = lastSyncedVelocity;
+        this.currentWorld = currentWorld;
+        this.lastSyncedWorld = lastSyncedWorld;
+    }
+
+    public Vector3d currentPos() {
+        return this.currentPos;
+    }
+
+    public @Nullable Vector3d lastSyncedPos() {
+        return this.lastSyncedPos;
+    }
+
+    public float currentYaw() {
+        return this.currentYaw;
+    }
+
+    public @Nullable Float lastSyncedYaw() {
+        return this.lastSyncedYaw;
+    }
+
+    public float currentPitch() {
+        return this.currentPitch;
+    }
+
+    public @Nullable Float lastSyncedPitch() {
+        return this.lastSyncedPitch;
+    }
+
+    public float currentVerticalHeadRot() {
+        return this.currentVerticalHeadRot;
+    }
+
+    public @Nullable Float lastSyncedVerticalHeadRot() {
+        return this.lastSyncedVerticalHeadRot;
+    }
+
+    public boolean currentOnGround() {
+        return this.currentOnGround;
+    }
+
+    public @Nullable Boolean lastSyncedOnGround() {
+        return this.lastSyncedOnGround;
+    }
+
+    public @Nullable Vector3d currentVelocity() {
+        return this.currentVelocity;
+    }
+
+    public @Nullable Vector3d lastSyncedVelocity() {
+        return this.lastSyncedVelocity;
+    }
+
+    public ProtocolWorld currentWorld() {
+        return this.currentWorld;
+    }
+
+    public @Nullable ProtocolWorld lastSyncedWorld() {
+        return this.lastSyncedWorld;
+    }
 
     public @Nullable Vector3d velocity() {
         return this.currentVelocity;
@@ -282,6 +373,53 @@ public record EntityWorldState(
     public boolean hasWorldChanged() {
         if (this.lastSyncedWorld == null) return true;
         return !this.currentWorld.equals(this.lastSyncedWorld);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EntityWorldState that = (EntityWorldState) o;
+        return Float.compare(that.currentYaw, this.currentYaw) == 0 &&
+                Float.compare(that.currentPitch, this.currentPitch) == 0 &&
+                Float.compare(that.currentVerticalHeadRot, this.currentVerticalHeadRot) == 0 &&
+                this.currentOnGround == that.currentOnGround &&
+                Objects.equals(this.currentPos, that.currentPos) &&
+                Objects.equals(this.lastSyncedPos, that.lastSyncedPos) &&
+                Objects.equals(this.lastSyncedYaw, that.lastSyncedYaw) &&
+                Objects.equals(this.lastSyncedPitch, that.lastSyncedPitch) &&
+                Objects.equals(this.lastSyncedVerticalHeadRot, that.lastSyncedVerticalHeadRot) &&
+                Objects.equals(this.lastSyncedOnGround, that.lastSyncedOnGround) &&
+                Objects.equals(this.currentVelocity, that.currentVelocity) &&
+                Objects.equals(this.lastSyncedVelocity, that.lastSyncedVelocity) &&
+                Objects.equals(this.currentWorld, that.currentWorld) &&
+                Objects.equals(this.lastSyncedWorld, that.lastSyncedWorld);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.currentPos, this.lastSyncedPos, this.currentYaw, this.lastSyncedYaw, this.currentPitch, this.lastSyncedPitch,
+                this.currentVerticalHeadRot, this.lastSyncedVerticalHeadRot, this.currentOnGround, this.lastSyncedOnGround,
+                this.currentVelocity, this.lastSyncedVelocity, this.currentWorld, this.lastSyncedWorld);
+    }
+
+    @Override
+    public String toString() {
+        return "EntityWorldState[" +
+                "currentPos=" + this.currentPos + ", " +
+                "lastSyncedPos=" + this.lastSyncedPos + ", " +
+                "currentYaw=" + this.currentYaw + ", " +
+                "lastSyncedYaw=" + this.lastSyncedYaw + ", " +
+                "currentPitch=" + this.currentPitch + ", " +
+                "lastSyncedPitch=" + this.lastSyncedPitch + ", " +
+                "currentVerticalHeadRot=" + this.currentVerticalHeadRot + ", " +
+                "lastSyncedVerticalHeadRot=" + this.lastSyncedVerticalHeadRot + ", " +
+                "currentOnGround=" + this.currentOnGround + ", " +
+                "lastSyncedOnGround=" + this.lastSyncedOnGround + ", " +
+                "currentVelocity=" + this.currentVelocity + ", " +
+                "lastSyncedVelocity=" + this.lastSyncedVelocity + ", " +
+                "currentWorld=" + this.currentWorld + ", " +
+                "lastSyncedWorld=" + this.lastSyncedWorld + ']';
     }
 
 }

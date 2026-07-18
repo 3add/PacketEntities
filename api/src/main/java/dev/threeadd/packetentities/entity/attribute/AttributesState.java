@@ -12,20 +12,39 @@ import org.jetbrains.annotations.UnmodifiableView;
 import java.util.*;
 
 @ApiStatus.Internal
-public record AttributesState(
-        @UnmodifiableView Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> currentProperties,
-        @UnmodifiableView @Nullable Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> lastSyncedProperties
-) {
+public final class AttributesState {
 
-    public AttributesState {
-        currentProperties = Object2ObjectMaps.unmodifiable(new Object2ObjectOpenHashMap<>(currentProperties));
+    @UnmodifiableView
+    private final Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> currentProperties;
+
+    @UnmodifiableView
+    private final @Nullable Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> lastSyncedProperties;
+
+    public AttributesState(
+            Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> currentProperties,
+            @Nullable Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> lastSyncedProperties
+    ) {
+        this.currentProperties = Object2ObjectMaps.unmodifiable(new Object2ObjectOpenHashMap<>(currentProperties));
         if (lastSyncedProperties != null) {
-            lastSyncedProperties = Object2ObjectMaps.unmodifiable(new Object2ObjectOpenHashMap<>(lastSyncedProperties));
+            this.lastSyncedProperties = Object2ObjectMaps.unmodifiable(new Object2ObjectOpenHashMap<>(lastSyncedProperties));
+        } else {
+            this.lastSyncedProperties = null;
         }
     }
 
     public AttributesState(List<WrapperPlayServerUpdateAttributes.Property> initialProperties) {
         this(toMap(initialProperties), null);
+    }
+
+    @UnmodifiableView
+    public Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> currentProperties() {
+        return this.currentProperties;
+    }
+
+    @UnmodifiableView
+    @Nullable
+    public Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> lastSyncedProperties() {
+        return this.lastSyncedProperties;
     }
 
     private static Object2ObjectMap<Attribute, WrapperPlayServerUpdateAttributes.Property> toMap(Iterable<WrapperPlayServerUpdateAttributes.Property> props) {
@@ -136,6 +155,27 @@ public record AttributesState(
 
     public AttributesState sync() {
         return new AttributesState(this.currentProperties, this.currentProperties);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AttributesState that = (AttributesState) o;
+        return Objects.equals(this.currentProperties, that.currentProperties) &&
+                Objects.equals(this.lastSyncedProperties, that.lastSyncedProperties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.currentProperties, this.lastSyncedProperties);
+    }
+
+    @Override
+    public String toString() {
+        return "AttributesState[" +
+                "currentProperties=" + this.currentProperties + ", " +
+                "lastSyncedProperties=" + this.lastSyncedProperties + ']';
     }
 
 }

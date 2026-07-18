@@ -2,7 +2,7 @@ plugins {
     `java-library`
 }
 
-val javaVersion = 21
+val javaVersion = 8
 
 group = "dev.threeadd.packetentities"
 version = "1.0-SNAPSHOT"

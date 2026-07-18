@@ -123,7 +123,7 @@ public class EntityManager {
     public @UnmodifiableView Collection<ProtocolEntity> getEntities() {
         this.idMapLock.readLock().lock();
         try {
-            return List.copyOf(this.entitiesByIdMap.values());
+            return Collections.unmodifiableList(new ArrayList<>(this.entitiesByIdMap.values()));
         } finally {
             this.idMapLock.readLock().unlock();
         }

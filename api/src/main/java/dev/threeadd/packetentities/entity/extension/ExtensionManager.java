@@ -5,10 +5,7 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 @ApiStatus.Internal
@@ -51,21 +48,21 @@ public final class ExtensionManager {
 
     public @UnmodifiableView Collection<EntityExtension> getAllExtensions() {
         synchronized (this.extensions) {
-            return List.copyOf(this.extensions.values());
+            return Collections.unmodifiableList(new ArrayList<>(this.extensions.values()));
         }
     }
 
     @UnmodifiableView
     public Collection<Class<? extends EntityExtension>> getExtensionClasses() {
         synchronized (this.extensions) {
-            return List.copyOf(this.extensions.keySet());
+            return Collections.unmodifiableList(new ArrayList<>(this.extensions.keySet()));
         }
     }
 
     public void attachAll(ProtocolEntity entity) {
         Collection<EntityExtension> snapshot;
         synchronized (this.extensions) {
-            snapshot = List.copyOf(this.extensions.values());
+            snapshot = getAllExtensions();
         }
 
         for (EntityExtension extension : snapshot) {
@@ -76,7 +73,7 @@ public final class ExtensionManager {
     public void detachAll(ProtocolEntity entity) {
         Collection<EntityExtension> snapshot;
         synchronized (this.extensions) {
-            snapshot = List.copyOf(this.extensions.values());
+            snapshot = getAllExtensions();
         }
 
         for (EntityExtension extension : snapshot) {
