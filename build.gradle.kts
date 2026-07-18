@@ -1,3 +1,3 @@
 plugins {
-    id("metalib.java-library")
+    id("packetentities.java-library")
 }

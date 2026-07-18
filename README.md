@@ -1,21 +1,21 @@
-# MetaLib (name is up for up for change), Unreleased!
+# PacketEntities, Unreleased!
 
 [![Platforms](https://img.shields.io/badge/platforms-Paper%20%7C%20Velocity-00bcd4.svg)](#)
 [![PacketEvents](https://img.shields.io/badge/dependency-PacketEvents-ff6f00.svg)](https://github.com/retrooper/packetevents)
 [![Minecraft Versions](https://img.shields.io/badge/minecraft%20versions-1.14.4%2B-brightgreen.svg)](#)
 
-**MetaLib** is a high-performance, developer library designed to abstract Minecraft's protocol-level entity system.
+**PacketEntities** is a high-performance, developer library designed to abstract Minecraft's protocol-level entity system.
 Built on top of **PacketEvents**, it allows you to easily create, control, and manipulate packet-based entities without the overhead of heavy server-side entities.
 
-Whether you are targeting backend game servers or proxy-side systems, 
-MetaLib handles the heavy lifting of version-agnostic metadata/object data,
+Whether you are targeting backend game servers or proxy-side systems,
+PacketEntities handles the heavy lifting of version-agnostic metadata/object data,
 spawn packets, and entity tracking seamlessly across **Minecraft 1.14.4 through the latest versions**.
 
 ## Getting Started
 
 ### 1. Add Dependencies
 First, ensure you have **PacketEvents** shaded or installed on your platform. Then, 
-add MetaLib to your build system and relocate it to avoid conflicts with other plugins:
+add PacketEntities to your build system and relocate it to avoid conflicts with other plugins:
 #### Gradle kotlin dsl
 ```gradle.kts
 plugins {
@@ -28,13 +28,13 @@ repositories {
 }
 
 dependencies {
-    implementation("dev.threeadd.metalib:spigot:1.0-SNAPSHOT")
+    implementation("dev.threeadd.packetentities:spigot:1.0-SNAPSHOT")
 }
 
 tasks {
     shadowJar {
         archiveFileName = project.name + "-" + project.version + ".jar"
-        relocate("dev.threeadd.metalib.", "dev.threeadd.metalibtest.metalib.")
+        relocate("dev.threeadd.packetentities.", "dev.threeadd.packetentitiestest.packetentities.")
     }
 }
 ```
@@ -47,16 +47,16 @@ Choose a platform (The example uses paper, but other platforms have similar setu
 
 @Override
 void onEnable() {
-    MetaLibAPISettings settings = new MetaLibAPISettings();
-    PaperMetaLibPlatform platform = new PaperMetaLibPlatform(this, settings);
-    MetaLib.init(platform);
+    PacketEntitiesAPISettings settings = new PacketEntitiesAPISettings();
+    PaperPacketEntitiesPlatform platform = new PaperPacketEntitiesPlatform(this, settings);
+    PacketEntities.init(platform);
   
     // other logic...
 }
 ```
 ## Example Usage
 ### Entities
-for a player
+for spawning a player entity
 ```java
 Location loc = /*...*/;
 UUID uuid = UUID.randomUUID();
@@ -99,4 +99,4 @@ WrapperPlayServerEntityMetadata metadataPacket = metadata.createPacket(entityId,
 ```
 
 ## Credits
-During this project, [EntityLib](https://github.com/Tofaa2/EntityLib) was used a base to start development from, though MetaLib was built from scratch.
+During this project, [EntityLib](https://github.com/Tofaa2/EntityLib) was used as a base to start development from, though PacketEntities was built from scratch.

@@ -14,6 +14,7 @@ velocity = "3.5.0-SNAPSHOT" # only supporting latest
 # code gen
 javapoet = "0.16.0"
 gson = "2.13.1"
+viaversion = "5.11.0"
 
 # gradle
 shadow = "9.4.2"
@@ -34,6 +35,7 @@ velocity-api = { group = "com.velocitypowered", name = "velocity-api", version.r
 # code gen
 javapoet = { group = "com.palantir.javapoet", name = "javapoet", version.ref = "javapoet" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+viaversion-api = { group = "com.viaversion", name = "viaversion-api", version.ref = "viaversion" }
 
 [plugins]
 

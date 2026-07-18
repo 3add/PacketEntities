@@ -1,6 +1,6 @@
 plugins {
-    id("metalib.java-library")
-    id("metalib.publishing")
+    id("packetentities.java-library")
+    id("packetentities.publishing")
 }
 
 repositories {

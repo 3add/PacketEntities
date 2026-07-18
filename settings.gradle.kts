@@ -1,4 +1,4 @@
-rootProject.name = "MetaLib"
+rootProject.name = "PacketEntities"
 
 include("api")
 include("platforms")
