@@ -32,6 +32,7 @@ import com.palantir.javapoet.ClassName;
 import com.palantir.javapoet.ParameterizedTypeName;
 import com.palantir.javapoet.TypeName;
 import com.palantir.javapoet.WildcardTypeName;
+import dev.threeadd.packetentities.codegen.GeneratedRefs;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,8 +40,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Maps a raw {@code dataType} string from the entity-data JSON to the Java type and
+ * {@code EntityDataTypes} constant used to represent it in generated code, and maps individual
+ * fields to a custom {@code *View} wrapper class where one exists.
+ */
 public class DataTypeMapper {
 
+    // no ai was used during these mappings, mappings are complete
     public DataTypeMapping mapDataType(String rawDataType) {
         TypeName particleWildCard = ParameterizedTypeName.get(ClassName.get(Particle.class), WildcardTypeName.subtypeOf(Object.class));
 
@@ -112,21 +119,20 @@ public class DataTypeMapper {
     private static final Map<FieldTarget, ClassName> VIEW_CLASSES_BY_FIELD = FieldTarget.registry()
 
             // bitmasks
-            .inPackage("dev.threeadd.packetentities.meta.protocol.bitmask.view")
+            .inPackage(GeneratedRefs.META_PACKAGE + ".protocol.view.bitmask.type")
             .add("AbstractArrow", "ID_FLAGS", "AbstractArrowIdFlagsView")
             .add("AbstractHorse", "FLAGS", "AbstractHorseFlagsView")
             .add("ArmorStand", "CLIENT_FLAGS", "ArmorStandClientFlagsView")
             .add("Avatar", "PLAYER_MODE_CUSTOMISATION", "AvatarPlayerModeCustomizationFlagsView")
-            .add("Entity", "SHARED_FLAGS", "BatFlagsView")
-            .add("Bee", "FLAGS", "BeeFlagsView")
             .add("Bat", "FLAGS", "BatFlagsView")
+            .add("Bee", "FLAGS", "BeeFlagsView")
             .add("Blaze", "FLAGS", "BlazeFlagsView")
             .add("Entity", "SHARED_FLAGS", "EntitySharedFlagsView")
-            .add("Vex", "FLAGS", "VexFlagsView")
             .add("TamableAnimal", "FLAGS", "TamableAnimalFlagsView")
+            .add("Vex", "FLAGS", "VexFlagsView")
 
             // enums
-            .inPackage("dev.threeadd.packetentities.meta.protocol.enums.view")
+            .inPackage( GeneratedRefs.META_PACKAGE + ".protocol.view.enumurator.type")
             .add("Axolotl", "VARIANT", "AxolotlVariantView")
             .add("Creeper", "SWELL_DIR", "CreeperSwellStateView")
             .add("Display", "BILLBOARD_RENDER_CONSTRAINTS", "DisplayBillboardView")

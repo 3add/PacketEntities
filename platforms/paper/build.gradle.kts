@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    api(project(":api"))
+    api(project(":"))
     compileOnly(libs.packetevents.spigot)
     compileOnly(libs.paper.api)
 }

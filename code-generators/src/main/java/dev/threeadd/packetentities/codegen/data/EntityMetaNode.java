@@ -8,8 +8,12 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
- * Represents a metadata class node parsed from {@link MetaPropertiesCodeGen#DATA_PATH_FORMAT},
- * aggregated across every Minecraft version that was fetched.
+ * A metadata class node, aggregated across every Minecraft version that was fetched, parsed from
+ * {@link MetaPropertiesCodeGen#DATA_PATH_FORMAT}.
+ *
+ * <p>Instances are keyed by canonical class name in the aggregation map built by
+ * {@code EntityMetaFetcher}, after resolving any renames via
+ * {@code dev.threeadd.packetentities.codegen.data.mapping.EntityClassAliasMapper}.
  */
 public class EntityMetaNode {
 

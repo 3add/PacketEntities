@@ -20,7 +20,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/api" />
             <option value="$PROJECT_DIR$/build-src" />
             <option value="$PROJECT_DIR$/code-generators" />
             <option value="$PROJECT_DIR$/platforms" />

@@ -1,6 +1,5 @@
 rootProject.name = "PacketEntities"
 
-include("api")
 include("platforms")
 include("platforms:paper")
 include("platforms:velocity")

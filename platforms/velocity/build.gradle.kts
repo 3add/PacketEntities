@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    api(project(":api"))
+    api(project(":"))
     compileOnly(libs.packetevents.velocity)
     compileOnly(libs.velocity.api)
     annotationProcessor(libs.velocity.api)

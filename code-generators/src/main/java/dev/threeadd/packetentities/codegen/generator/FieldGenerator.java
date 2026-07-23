@@ -1,59 +1,49 @@
 package dev.threeadd.packetentities.codegen.generator;
 
 import com.palantir.javapoet.*;
+import dev.threeadd.packetentities.codegen.GeneratedRefs;
 import dev.threeadd.packetentities.codegen.data.FieldNode;
 import dev.threeadd.packetentities.codegen.data.fetch.FieldSnapshot;
 import dev.threeadd.packetentities.codegen.data.mapping.DataTypeMapper;
 import dev.threeadd.packetentities.codegen.data.mapping.DataTypeMapping;
 
 import javax.lang.model.element.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class FieldGenerator {
-
-    private static final ClassName SIMPLE_FIELD = ClassName.get("dev.threeadd.packetentities.meta.field", "SimpleField");
-    private static final ClassName VIEW_FIELD = ClassName.get("dev.threeadd.packetentities.meta.field", "ViewField");
-    private static final ClassName CLIENT_VERSION = ClassName.get("com.github.retrooper.packetevents.manager.server", "ServerVersion");
-    private static final ClassName ENTITY_DATA_TYPES = ClassName.get("com.github.retrooper.packetevents.protocol.entity.data", "EntityDataTypes");
-
-    private final JavadocGenerator javadocGenerator;
-
-    public FieldGenerator(JavadocGenerator javadocGenerator) {
-        this.javadocGenerator = javadocGenerator;
-    }
-
-    public JavadocGenerator getJavadocGenerator() {
-        return this.javadocGenerator;
-    }
+/**
+ * Generates a single {@code SimpleField}/{@code ViewField} constant for one aggregated
+ * {@link FieldNode}, together with its {@code .addVersionRange(...)} builder chain.
+ */
+public record FieldGenerator(JavadocGenerator javadocGenerator) {
 
     public FieldSpec generate(ClassName holderClass, FieldNode field, DataTypeMapper mapper) {
-        FieldSnapshot latestData = getLatestVersionData(field.getVersions());
+        FieldSnapshot latestData = getLatestVersionData(field);
         DataTypeMapping latestMapping = mapper.mapDataType(latestData.rawDataType());
-
         ClassName viewClass = mapper.getViewClass(holderClass.simpleName(), field.getFieldName());
-        ParameterizedTypeName fieldType = resolveFieldType(latestMapping.typeName(), viewClass);
 
-        CodeBlock initBlock = buildInitializer(fieldType, field, latestMapping, latestData.rawDataType(), viewClass, mapper);
-        CodeBlock javadocComment = this.javadocGenerator.generateFieldJavadoc(field, viewClass);
+        ParameterizedTypeName fieldType = resolveFieldType(latestMapping.typeName(), viewClass);
+        CodeBlock initializer = buildInitializer(fieldType, field, latestMapping, latestData.rawDataType(), viewClass, mapper);
+        CodeBlock javadoc = this.javadocGenerator.generateFieldJavadoc(field, viewClass);
 
         return FieldSpec.builder(fieldType, field.getFieldName())
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC, Modifier.FINAL)
-                .addJavadoc(javadocComment)
-                .initializer(initBlock)
+                .addJavadoc(javadoc)
+                .initializer(initializer)
                 .build();
     }
 
     private ParameterizedTypeName resolveFieldType(TypeName innerType, ClassName viewClass) {
         if (viewClass != null) {
-            return ParameterizedTypeName.get(VIEW_FIELD, innerType, viewClass);
+            return ParameterizedTypeName.get(GeneratedRefs.VIEW_FIELD, innerType, viewClass);
         }
-
-        return ParameterizedTypeName.get(SIMPLE_FIELD, innerType);
+        return ParameterizedTypeName.get(GeneratedRefs.SIMPLE_FIELD, innerType);
     }
 
-    private CodeBlock buildInitializer(ParameterizedTypeName fieldType, FieldNode field, DataTypeMapping latestMapping, String latestRawType, ClassName viewClass, DataTypeMapper mapper) {
-
+    private CodeBlock buildInitializer(ParameterizedTypeName fieldType, FieldNode field, DataTypeMapping latestMapping,
+                                       String latestRawType, ClassName viewClass, DataTypeMapper mapper) {
         CodeBlock.Builder builder = CodeBlock.builder();
 
         if (viewClass != null) {
@@ -62,30 +52,8 @@ public class FieldGenerator {
             builder.add("$T.<$T>builder()$>\n", fieldType.rawType(), latestMapping.typeName());
         }
 
-        String startVersion = null;
-        String endVersion = null;
-        FieldSnapshot currentData = null;
-
-        for (Map.Entry<String, FieldSnapshot> entry : field.getVersions().entrySet()) {
-            String version = entry.getKey();
-            FieldSnapshot data = entry.getValue();
-
-            if (currentData == null) {
-                startVersion = version;
-                endVersion = version;
-                currentData = data;
-            } else if (data.index() == currentData.index() && data.rawDataType().equals(currentData.rawDataType())) {
-                endVersion = version;
-            } else {
-                appendVersionRangeMapping(builder, startVersion, endVersion, currentData, latestMapping, latestRawType, mapper);
-                startVersion = version;
-                endVersion = version;
-                currentData = data;
-            }
-        }
-
-        if (currentData != null) {
-            appendVersionRangeMapping(builder, startVersion, endVersion, currentData, latestMapping, latestRawType, mapper);
+        for (VersionRange range : collapseIntoRanges(field.getVersions())) {
+            appendVersionRangeMapping(builder, range, latestMapping, latestRawType, mapper);
         }
 
         return builder.add(".build()")
@@ -93,29 +61,91 @@ public class FieldGenerator {
                 .build();
     }
 
-    private void appendVersionRangeMapping(CodeBlock.Builder builder, String startVersion, String endVersion, FieldSnapshot data, DataTypeMapping latestMapping, String latestRawType, DataTypeMapper mapper) {
-        String enumStartVersion = "V_" + startVersion.replace('.', '_');
-        String enumEndVersion = "V_" + endVersion.replace('.', '_');
-        DataTypeMapping versionMapping = mapper.mapDataType(data.rawDataType());
+    /**
+     * Collapses the per-version map into runs of consecutive versions that share the same field
+     * index and raw data type, since a run like that only needs a single {@code addVersionRange}
+     * call spanning its first and last version.
+     */
+    private List<VersionRange> collapseIntoRanges(Map<String, FieldSnapshot> versions) {
+        List<VersionRange> ranges = new ArrayList<>();
+        VersionRange current = null;
 
-        boolean typesMatch = data.rawDataType().equals(latestRawType) ||
-                (versionMapping != null && latestMapping != null &&
-                        Objects.equals(versionMapping.packetEventsDataType(), latestMapping.packetEventsDataType()));
+        for (Map.Entry<String, FieldSnapshot> entry : versions.entrySet()) {
+            String version = entry.getKey();
+            FieldSnapshot data = entry.getValue();
 
-        if (versionMapping != null && !versionMapping.isExcluded() && typesMatch) {
-            builder.add(".addVersionRange($T.$L, $T.$L, $L, $T.$L)\n",
-                    CLIENT_VERSION, enumStartVersion, CLIENT_VERSION, enumEndVersion, data.index(), ENTITY_DATA_TYPES, versionMapping.packetEventsDataType());
-        } else {
-            builder.add("// TODO type changed from '$L' to '$L', converter required\n",
-                    data.rawDataType(), latestRawType);
+            if (current != null && current.canExtendWith(data)) {
+                current.extendTo(version);
+                continue;
+            }
+
+            current = new VersionRange(version, data);
+            ranges.add(current);
         }
+
+        return ranges;
     }
 
-    private FieldSnapshot getLatestVersionData(Map<String, FieldSnapshot> versions) {
+    private void appendVersionRangeMapping(CodeBlock.Builder builder, VersionRange range, DataTypeMapping latestMapping,
+                                           String latestRawType, DataTypeMapper mapper) {
+        DataTypeMapping versionMapping = mapper.mapDataType(range.data.rawDataType());
+        boolean typesMatch = range.data.rawDataType().equals(latestRawType)
+                || (versionMapping != null && latestMapping != null
+                && Objects.equals(versionMapping.packetEventsDataType(), latestMapping.packetEventsDataType()));
+
+        if (versionMapping == null || versionMapping.isExcluded() || !typesMatch) {
+            builder.add("// TODO type changed from '$L' to '$L', converter required\n", range.data.rawDataType(), latestRawType);
+            return;
+        }
+
+        builder.add(".addVersionRange($T.$L, $T.$L, $L, $T.$L)\n",
+                GeneratedRefs.CLIENT_VERSION, range.startEnumName(), GeneratedRefs.CLIENT_VERSION, range.endEnumName(),
+                range.data.index(), GeneratedRefs.ENTITY_DATA_TYPES, versionMapping.packetEventsDataType());
+    }
+
+    private FieldSnapshot getLatestVersionData(FieldNode field) {
+        Map<String, FieldSnapshot> versions = field.getVersions();
         if (versions.isEmpty()) {
-            throw new IllegalStateException("Empty versions map encountered during code generation.");
+            throw new IllegalStateException("Empty versions map encountered during code generation for field '" + field.getFieldName() + "'.");
         }
         return versions.entrySet().stream().reduce((first, second) -> second).get().getValue();
+    }
+
+    /**
+     * A run of consecutive versions sharing the same field index and raw data type.
+     */
+    private static final class VersionRange {
+
+        private final String startVersion;
+        private final FieldSnapshot data;
+        private String endVersion;
+
+        private VersionRange(String startVersion, FieldSnapshot data) {
+            this.startVersion = startVersion;
+            this.endVersion = startVersion;
+            this.data = data;
+        }
+
+        private boolean canExtendWith(FieldSnapshot next) {
+            return next.index() == this.data.index() && next.rawDataType().equals(this.data.rawDataType());
+        }
+
+        private void extendTo(String version) {
+            this.endVersion = version;
+        }
+
+        private String startEnumName() {
+            return toEnumName(this.startVersion);
+        }
+
+        private String endEnumName() {
+            return toEnumName(this.endVersion);
+        }
+
+        private static String toEnumName(String version) {
+            return "V_" + version.replace('.', '_');
+        }
+
     }
 
 }

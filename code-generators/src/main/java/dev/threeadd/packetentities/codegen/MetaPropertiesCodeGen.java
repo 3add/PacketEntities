@@ -13,6 +13,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * Entry point for the code generator: fetches entity metadata for every supported Minecraft
+ * version, aggregates it (merging renamed classes/fields), topologically sorts it by
+ * inheritance, then emits the unified {@code EntityMetaFields} class and the schema registry.
+ */
 public class MetaPropertiesCodeGen {
 
     public static final String VERSIONS_PATH = "/entity-data/versions.json";
@@ -57,13 +62,7 @@ public class MetaPropertiesCodeGen {
             List<EntityMetaNode> sortedEntities = getTopologicallySortedEntities(metas);
 
             System.out.println("Generating unified class file with nested inner classes...");
-            try {
-                JavaFile compiledJavaFile = classGenerator.generate(sortedEntities);
-                outputWriter.write(compiledJavaFile);
-            } catch (Exception e) {
-                System.err.println("Failed to write single unified EntityMetaProperties class: " + e.getMessage());
-                throw e;
-            }
+            writeUnifiedClass(outputWriter, classGenerator, sortedEntities);
 
             System.out.println("Generating schema registry...");
             SchemaRegistryGenerator registryGenerator = new SchemaRegistryGenerator();
@@ -76,12 +75,23 @@ public class MetaPropertiesCodeGen {
         }
     }
 
+    private static void writeUnifiedClass(DiskOutputWriter outputWriter, MetaFieldClassGenerator classGenerator,
+                                           List<EntityMetaNode> sortedEntities) throws IOException {
+        try {
+            JavaFile compiledJavaFile = classGenerator.generate(sortedEntities);
+            outputWriter.write(compiledJavaFile);
+        } catch (Exception e) {
+            System.err.println("Failed to write single unified EntityMetaProperties class: " + e.getMessage());
+            throw e;
+        }
+    }
+
+    /** Orders entities so that every superclass appears before its subclasses. */
     private static List<EntityMetaNode> getTopologicallySortedEntities(Map<String, EntityMetaNode> aggregatedEntities) {
         List<EntityMetaNode> sortedResult = new ArrayList<>();
         Set<String> visited = new HashSet<>();
 
         List<String> sortedKeys = aggregatedEntities.keySet().stream().sorted().toList();
-
         for (String className : sortedKeys) {
             visitNode(className, aggregatedEntities, visited, sortedResult);
         }
