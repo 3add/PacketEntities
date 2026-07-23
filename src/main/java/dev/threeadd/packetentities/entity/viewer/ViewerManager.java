@@ -13,7 +13,7 @@ import dev.threeadd.packetentities.event.Event;
 import dev.threeadd.packetentities.event.EventBus;
 import dev.threeadd.packetentities.event.EventSubscription;
 import dev.threeadd.packetentities.util.PacketDispatcher;
-import dev.threeadd.packetentities.platform.PlatformWorld;
+import dev.threeadd.packetentities.world.ProtocolWorld;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
@@ -160,8 +160,8 @@ public class ViewerManager {
 
     private boolean shouldSee(User user) {
         // TODO hard coded rule, maybe make entities be able to be in multiple worlds in the future
-        PlatformWorld entityWorld = this.entity.getWorldStateManager().getWorldState().currentWorld();
-        PlatformWorld userWorld = PacketEntities.getPlatform().getWorldProvider().provide(user);
+        ProtocolWorld entityWorld = this.entity.getWorldStateManager().getWorldState().currentWorld();
+        ProtocolWorld userWorld = PacketEntities.getPlatform().getWorldProvider().provide(user);
         if (!userWorld.equals(entityWorld)) {
             return false;
         }

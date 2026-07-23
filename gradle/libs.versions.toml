@@ -18,6 +18,7 @@ gson = "2.13.1"
 
 # gradle
 shadow = "9.4.2"
+blossom = "2.2.0"
 
 [libraries]
 
@@ -41,3 +42,4 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 # gradle
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+blossom = { id = "net.kyori.blossom", version.ref = "blossom" }

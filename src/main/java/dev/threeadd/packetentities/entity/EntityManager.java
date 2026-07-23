@@ -1,7 +1,7 @@
 package dev.threeadd.packetentities.entity;
 
 import com.github.retrooper.packetevents.util.Vector3d;
-import dev.threeadd.packetentities.platform.PlatformWorld;
+import dev.threeadd.packetentities.world.ProtocolWorld;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import org.jetbrains.annotations.ApiStatus;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class EntityManager {
 
-    private final Map<PlatformWorld, Set<ProtocolEntity>> entitiesByWorld = new ConcurrentHashMap<>();
+    private final Map<ProtocolWorld, Set<ProtocolEntity>> entitiesByWorld = new ConcurrentHashMap<>();
     private final Map<UUID, ProtocolEntity> entitiesByUuidMap = new ConcurrentHashMap<>();
 
     // handle with synchronized blocks, thread safety
@@ -133,9 +133,9 @@ public class EntityManager {
      * This getter is O(1)
      *
      * @param world the world of the entities
-     * @return all the entities in the provided {@link PlatformWorld}
+     * @return all the entities in the provided {@link ProtocolWorld}
      */
-    public @UnmodifiableView Collection<ProtocolEntity> getEntitiesInWorld(PlatformWorld world) {
+    public @UnmodifiableView Collection<ProtocolEntity> getEntitiesInWorld(ProtocolWorld world) {
         Set<ProtocolEntity> set = this.entitiesByWorld.get(world);
         return set != null ? Collections.unmodifiableCollection(set) : Collections.emptySet();
     }
@@ -147,8 +147,8 @@ public class EntityManager {
 
     @ApiStatus.Internal
     public void updateEntityWorld(ProtocolEntity entity,
-                                  PlatformWorld oldWorld, Vector3d oldPos,
-                                  PlatformWorld newWorld, Vector3d newPos) {
+                                  ProtocolWorld oldWorld, Vector3d oldPos,
+                                  ProtocolWorld newWorld, Vector3d newPos) {
         Set<ProtocolEntity> oldSet = this.entitiesByWorld.get(oldWorld);
         if (oldSet != null) {
             oldSet.remove(entity);

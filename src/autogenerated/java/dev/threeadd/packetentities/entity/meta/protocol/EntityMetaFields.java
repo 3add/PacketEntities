@@ -62,25 +62,24 @@ import net.kyori.adventure.text.Component;
 /**
  * Holds all {@link IEntityMetaFieldHolder} and {@link EntityMetaSchema}, grouped by their respective {@link EntityTypes}.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SpellCheckingInspection"})
 public final class EntityMetaFields {
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Entity">Entity on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Entity">Entity on the minecraft.wiki</a>
      */
     public static class Entity implements IEntityMetaFieldHolder {
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Integer> AIR_SUPPLY = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_26_2, 1, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Optional<Component>> CUSTOM_NAME = SimpleField.<Optional<Component>>builder()
             // TODO type changed from 'String' to 'Optional<Component>', converter required
@@ -88,44 +87,43 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Boolean> CUSTOM_NAME_VISIBLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_26_2, 3, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.11.2 - 26.2}
+         * @mcversions {@code 1.11.2 - 26.2}
          */
         public static final SimpleField<Boolean> NO_GRAVITY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_26_2, 5, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<EntityPose> POSE = SimpleField.<EntityPose>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_26_2, 6, EntityDataTypes.ENTITY_POSE)
             .build();
 
         /**
-         * Wrapped by view: {@link EntitySharedFlagsView}
-         * <br>
-         * Versions: {@code 1.9.4 - 26.2}
+         * @view {@link EntitySharedFlagsView}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final ViewField<Byte, EntitySharedFlagsView> SHARED_FLAGS = ViewField.builder(EntitySharedFlagsView::new)
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_26_2, 0, EntityDataTypes.BYTE)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Boolean> SILENT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_26_2, 4, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Integer> TICKS_FROZEN = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_26_2, 7, EntityDataTypes.INT)
@@ -145,7 +143,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16 - 26.2}
+     * @mcversions {@code 1.16 - 26.2}
      */
     public static class Projectile extends Entity {
 
@@ -155,16 +153,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Arrow">Abstract Arrow on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Arrow">Abstract Arrow on the minecraft.wiki</a>
      */
     public static class AbstractArrow extends Projectile {
 
         /**
-         * Wrapped by view: {@link AbstractArrowIdFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link AbstractArrowIdFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, AbstractArrowIdFlagsView> ID_FLAGS = ViewField.builder(AbstractArrowIdFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.BYTE)
@@ -172,21 +168,21 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Boolean> IN_GROUND = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 10, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.15}
+         * @mcversions {@code 1.14.4 - 1.15}
          */
         public static final SimpleField<Optional<UUID>> OWNERUUID = SimpleField.<Optional<UUID>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_15, 8, EntityDataTypes.OPTIONAL_UUID)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> PIERCE_LEVEL = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_15, 9, EntityDataTypes.BYTE)
@@ -204,26 +200,26 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.3 - 26.2}
+     * @mcversions {@code 1.20.3 - 26.2}
      */
     public static class VehicleEntity extends Entity {
 
         /**
-         * Versions: {@code 1.20.3 - 26.2}
+         * @mcversions {@code 1.20.3 - 26.2}
          */
         public static final SimpleField<Float> DAMAGE = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_20_3, ServerVersion.V_26_2, 10, EntityDataTypes.FLOAT)
             .build();
 
         /**
-         * Versions: {@code 1.20.3 - 26.2}
+         * @mcversions {@code 1.20.3 - 26.2}
          */
         public static final SimpleField<Integer> HURT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_3, ServerVersion.V_26_2, 8, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.20.3 - 26.2}
+         * @mcversions {@code 1.20.3 - 26.2}
          */
         public static final SimpleField<Integer> HURTDIR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_3, ServerVersion.V_26_2, 9, EntityDataTypes.INT)
@@ -238,26 +234,26 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
+     * @mcversions {@code 1.21.2 - 26.2}
      */
     public static class AbstractBoat extends VehicleEntity {
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Integer> BUBBLE_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 13, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Boolean> PADDLE_LEFT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 11, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Boolean> PADDLE_RIGHT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 12, EntityDataTypes.BOOLEAN)
@@ -272,7 +268,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
+     * @mcversions {@code 1.21.2 - 26.2}
      */
     public static class AbstractChestBoat extends AbstractBoat {
 
@@ -282,14 +278,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Living_Entity">Living Entity on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Living_Entity">Living Entity on the minecraft.wiki</a>
      */
     public static class LivingEntity extends Entity {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> AI_FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 10, EntityDataTypes.BYTE)
@@ -297,7 +292,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> ARROW_COUNT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 11, EntityDataTypes.INT)
@@ -305,7 +300,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> ARROW_COUNT_IN_ENTITY = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 9, EntityDataTypes.INT)
@@ -313,7 +308,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> EFFECT_AMBIENCE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 10, EntityDataTypes.BOOLEAN)
@@ -321,7 +316,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.3}
+         * @mcversions {@code 1.14.4 - 1.20.3}
          */
         public static final SimpleField<Integer> EFFECT_COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 9, EntityDataTypes.INT)
@@ -329,14 +324,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.20.5 - 26.2}
+         * @mcversions {@code 1.20.5 - 26.2}
          */
         public static final SimpleField<List<Particle<?>>> EFFECT_PARTICLES = SimpleField.<List<Particle<?>>>builder()
             .addVersionRange(ServerVersion.V_1_20_5, ServerVersion.V_26_2, 10, EntityDataTypes.PARTICLES)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> HAND_STATES = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.BYTE)
@@ -344,7 +339,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Float> HEALTH = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 6, EntityDataTypes.FLOAT)
@@ -354,7 +349,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> HIDE_PARTICLES = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 8, EntityDataTypes.BOOLEAN)
@@ -362,7 +357,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> LIVING_ENTITY_FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.BYTE)
@@ -370,7 +365,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> POTION_EFFECTS = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 7, EntityDataTypes.INT)
@@ -378,7 +373,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<Vector3i>> SLEEPING_POS = SimpleField.<Optional<Vector3i>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 12, EntityDataTypes.OPTIONAL_BLOCK_POSITION)
@@ -387,7 +382,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.15 - 26.2}
+         * @mcversions {@code 1.15 - 26.2}
          */
         public static final SimpleField<Integer> STINGER_COUNT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_15, ServerVersion.V_1_16_2, 12, EntityDataTypes.INT)
@@ -413,14 +408,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mob">Mob on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mob">Mob on the minecraft.wiki</a>
      */
     public static class Mob extends LivingEntity {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> MOB_FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 13, EntityDataTypes.BYTE)
@@ -435,7 +429,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class PathfinderMob extends Mob {
 
@@ -445,21 +439,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ageable_Mob">Ageable Mob on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ageable_Mob">Ageable Mob on the minecraft.wiki</a>
      */
     public static class AgeableMob extends PathfinderMob {
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<Boolean> AGE_LOCKED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 17, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Boolean> BABY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -477,9 +470,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Animal">Animal on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Animal">Animal on the minecraft.wiki</a>
      */
     public static class Animal extends AgeableMob {
 
@@ -489,16 +481,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Horse">Abstract Horse on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Horse">Abstract Horse on the minecraft.wiki</a>
      */
     public static class AbstractHorse extends Animal {
 
         /**
-         * Wrapped by view: {@link AbstractHorseFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link AbstractHorseFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, AbstractHorseFlagsView> FLAGS = ViewField.builder(AbstractHorseFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BYTE)
@@ -508,7 +498,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.19.3}
+         * @mcversions {@code 1.14.4 - 1.19.3}
          */
         public static final SimpleField<Optional<UUID>> OWNER_UUID = SimpleField.<Optional<UUID>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.OPTIONAL_UUID)
@@ -517,7 +507,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<Byte> STATUS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 13, EntityDataTypes.BYTE)
@@ -532,12 +522,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
+     * @mcversions {@code 1.11.2 - 26.2}
      */
     public static class AbstractChestedHorse extends AbstractHorse {
 
         /**
-         * Versions: {@code 1.12.2 - 26.2}
+         * @mcversions {@code 1.12.2 - 26.2}
          */
         public static final SimpleField<Boolean> CHEST = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 14, EntityDataTypes.BOOLEAN)
@@ -555,14 +545,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.9 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Avatar">Avatar on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.9 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Avatar">Avatar on the minecraft.wiki</a>
      */
     public static class Avatar extends LivingEntity {
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<HumanoidArm> PLAYER_MAIN_HAND = SimpleField.<HumanoidArm>builder()
             // TODO type changed from 'Byte' to 'HumanoidArm', converter required
@@ -570,9 +559,8 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Wrapped by view: {@link AvatarPlayerModeCustomizationFlagsView}
-         * <br>
-         * Versions: {@code 1.21.9 - 26.2}
+         * @view {@link AvatarPlayerModeCustomizationFlagsView}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final ViewField<Byte, AvatarPlayerModeCustomizationFlagsView> PLAYER_MODE_CUSTOMISATION = ViewField.builder(AvatarPlayerModeCustomizationFlagsView::new)
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 16, EntityDataTypes.BYTE)
@@ -586,14 +574,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Player">Player on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Player">Player on the minecraft.wiki</a>
      */
     public static class Player extends Avatar {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Float> ABSORPTION = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 10, EntityDataTypes.FLOAT)
@@ -601,14 +588,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<NBTCompound> LEFT_SHOULDER_ENTITY = SimpleField.<NBTCompound>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 15, EntityDataTypes.NBT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> MAIN_HAND = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.BYTE)
@@ -616,7 +603,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Float> PLAYER_ABSORPTION = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 13, EntityDataTypes.FLOAT)
@@ -626,7 +613,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.6}
+         * @mcversions {@code 1.14.4 - 1.21.6}
          */
         public static final SimpleField<Byte> PLAYER_MAIN_HAND = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BYTE)
@@ -635,7 +622,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> PLAYER_MODEL_FLAG = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BYTE)
@@ -643,7 +630,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.6}
+         * @mcversions {@code 1.14.4 - 1.21.6}
          */
         public static final SimpleField<Byte> PLAYER_MODE_CUSTOMISATION = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BYTE)
@@ -652,7 +639,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> PLAYER_SCORE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
@@ -660,14 +647,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<NBTCompound> RIGHT_SHOULDER_ENTITY = SimpleField.<NBTCompound>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 16, EntityDataTypes.NBT)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> SCORE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.INT)
@@ -677,7 +664,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.6}
+         * @mcversions {@code 1.14.4 - 1.21.6}
          */
         public static final SimpleField<NBTCompound> SHOULDER_LEFT = SimpleField.<NBTCompound>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.NBT)
@@ -686,21 +673,21 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<Optional<Integer>> SHOULDER_PARROT_LEFT = SimpleField.<Optional<Integer>>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 19, EntityDataTypes.OPTIONAL_INT)
             .build();
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<Optional<Integer>> SHOULDER_PARROT_RIGHT = SimpleField.<Optional<Integer>>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 20, EntityDataTypes.OPTIONAL_INT)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.6}
+         * @mcversions {@code 1.14.4 - 1.21.6}
          */
         public static final SimpleField<NBTCompound> SHOULDER_RIGHT = SimpleField.<NBTCompound>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.NBT)
@@ -728,7 +715,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class AbstractClientPlayer extends Player {
 
@@ -738,7 +725,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.5 - 26.2}
+     * @mcversions {@code 1.21.5 - 26.2}
      */
     public static class AbstractCow extends Animal {
 
@@ -748,14 +735,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Cube_Mob">Abstract Cube Mob on the minecraft.wiki</a>
+     * @mcversions {@code 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Cube_Mob">Abstract Cube Mob on the minecraft.wiki</a>
      */
     public static class AbstractCubeMob extends AgeableMob {
 
         /**
-         * Versions: {@code 26.2}
+         * @mcversions {@code 26.2}
          */
         public static final SimpleField<Integer> ID_SIZE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_26_2, ServerVersion.V_26_2, 18, EntityDataTypes.INT)
@@ -768,7 +754,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class WaterAnimal extends PathfinderMob {
 
@@ -778,14 +764,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Fish">Abstract Fish on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Fish">Abstract Fish on the minecraft.wiki</a>
      */
     public static class AbstractFish extends WaterAnimal {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> FROM_BUCKET = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BOOLEAN)
@@ -800,7 +785,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class AbstractGolem extends PathfinderMob {
 
@@ -810,7 +795,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class AbstractHurtingProjectile extends Projectile {
 
@@ -820,9 +805,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Monster">Monster on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Monster">Monster on the minecraft.wiki</a>
      */
     public static class Monster extends PathfinderMob {
 
@@ -832,7 +816,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class PatrollingMonster extends Monster {
 
@@ -842,14 +826,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Raider">Raider on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Raider">Raider on the minecraft.wiki</a>
      */
     public static class Raider extends PatrollingMonster {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_CELEBRATING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BOOLEAN)
@@ -864,12 +847,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 26.2}
+     * @mcversions {@code 1.12 - 26.2}
      */
     public static class AbstractIllager extends Raider {
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Byte> AGGRESSIVE = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 12, EntityDataTypes.BYTE)
@@ -882,14 +865,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Minecart">Abstract Minecart on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Minecart">Abstract Minecart on the minecraft.wiki</a>
      */
     public static class AbstractMinecart extends VehicleEntity {
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Boolean> CUSTOM_DISPLAY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 12, EntityDataTypes.BOOLEAN)
@@ -897,14 +879,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<Integer> CUSTOM_DISPLAY_BLOCK = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_26_2, 11, EntityDataTypes.OPTIONAL_BLOCK_STATE)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Float> DAMAGE = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 9, EntityDataTypes.FLOAT)
@@ -912,7 +894,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Integer> DISPLAY_BLOCK = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 10, EntityDataTypes.INT)
@@ -920,7 +902,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> DISPLAY_OFFSET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 11, EntityDataTypes.INT)
@@ -928,7 +910,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Integer> HURT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.INT)
@@ -936,7 +918,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Integer> HURTDIR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 8, EntityDataTypes.INT)
@@ -956,7 +938,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class AbstractMinecartContainer extends AbstractMinecart {
 
@@ -966,14 +948,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class TamableAnimal extends Animal {
 
         /**
-         * Wrapped by view: {@link TamableAnimalFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link TamableAnimalFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, TamableAnimalFlagsView> FLAGS = ViewField.builder(TamableAnimalFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BYTE)
@@ -983,7 +964,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<UUID>> OWNERUUID = SimpleField.<Optional<UUID>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.OPTIONAL_UUID)
@@ -994,7 +975,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> TAMED = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BYTE)
@@ -1010,14 +991,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.11 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Nautilus">Abstract Nautilus on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.11 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Nautilus">Abstract Nautilus on the minecraft.wiki</a>
      */
     public static class AbstractNautilus extends TamableAnimal {
 
         /**
-         * Versions: {@code 1.21.11 - 26.2}
+         * @mcversions {@code 1.21.11 - 26.2}
          */
         public static final SimpleField<Boolean> DASH = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_11, ServerVersion.V_1_21_11, 19, EntityDataTypes.BOOLEAN)
@@ -1031,12 +1011,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16.2 - 26.2}
+     * @mcversions {@code 1.16.2 - 26.2}
      */
     public static class AbstractPiglin extends Monster {
 
         /**
-         * Versions: {@code 1.16.2 - 26.2}
+         * @mcversions {@code 1.16.2 - 26.2}
          */
         public static final SimpleField<Boolean> IMMUNE_TO_ZOMBIFICATION = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16_2, ServerVersion.V_1_16_2, 15, EntityDataTypes.BOOLEAN)
@@ -1050,7 +1030,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class AbstractSchoolingFish extends AbstractFish {
 
@@ -1060,12 +1040,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
+     * @mcversions {@code 1.11.2 - 26.2}
      */
     public static class AbstractSkeleton extends Monster {
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<Boolean> SWINGING_ARMS = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 12, EntityDataTypes.BOOLEAN)
@@ -1078,7 +1058,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class ThrowableProjectile extends Projectile {
 
@@ -1088,12 +1068,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class ThrowableItemProjectile extends ThrowableProjectile {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM_STACK = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.ITEMSTACK)
@@ -1107,7 +1087,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.5 - 26.2}
+     * @mcversions {@code 1.21.5 - 26.2}
      */
     public static class AbstractThrownPotion extends ThrowableItemProjectile {
 
@@ -1117,14 +1097,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Villager">Abstract Villager on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Abstract_Villager">Abstract Villager on the minecraft.wiki</a>
      */
     public static class AbstractVillager extends AgeableMob {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> UNHAPPY_COUNTER = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -1140,7 +1119,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.5 - 26.2}
+     * @mcversions {@code 1.20.5 - 26.2}
      */
     public static class AbstractWindCharge extends AbstractHurtingProjectile {
 
@@ -1150,7 +1129,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
+     * @mcversions {@code 1.21.2 - 26.2}
      */
     public static class AgeableWaterCreature extends AgeableMob {
 
@@ -1160,21 +1139,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Allay">Allay on the minecraft.wiki</a>
+     * @mcversions {@code 1.19 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Allay">Allay on the minecraft.wiki</a>
      */
     public static class Allay extends PathfinderMob {
 
         /**
-         * Versions: {@code 1.19.1 - 26.2}
+         * @mcversions {@code 1.19.1 - 26.2}
          */
         public static final SimpleField<Boolean> CAN_DUPLICATE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19_1, ServerVersion.V_26_2, 17, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.19.1 - 26.2}
+         * @mcversions {@code 1.19.1 - 26.2}
          */
         public static final SimpleField<Boolean> DANCING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19_1, ServerVersion.V_26_2, 16, EntityDataTypes.BOOLEAN)
@@ -1188,7 +1166,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class AmbientCreature extends Mob {
 
@@ -1198,14 +1176,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Area_Effect_Cloud">Area Effect Cloud on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Area_Effect_Cloud">Area Effect Cloud on the minecraft.wiki</a>
      */
     public static class AreaEffectCloud extends Entity {
 
         /**
-         * Versions: {@code 1.9.4 - 1.20.3}
+         * @mcversions {@code 1.9.4 - 1.20.3}
          */
         public static final SimpleField<Integer> COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 6, EntityDataTypes.INT)
@@ -1215,7 +1192,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> IGNORE_RADIUS = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 7, EntityDataTypes.BOOLEAN)
@@ -1223,7 +1200,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Particle<?>> PARTICLE = SimpleField.<Particle<?>>builder()
             // TODO type changed from 'Integer' to 'ParticleOptions', converter required
@@ -1234,21 +1211,21 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<Integer> PARTICLE_PARAM_1 = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 10, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<Integer> PARTICLE_PARAM_2 = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 11, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Float> RADIUS = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.FLOAT)
@@ -1258,7 +1235,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> WAITING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 9, EntityDataTypes.BOOLEAN)
@@ -1279,14 +1256,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.5 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Armadillo">Armadillo on the minecraft.wiki</a>
+     * @mcversions {@code 1.20.5 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Armadillo">Armadillo on the minecraft.wiki</a>
      */
     public static class Armadillo extends Animal {
 
         /**
-         * Versions: {@code 1.20.5 - 26.2}
+         * @mcversions {@code 1.20.5 - 26.2}
          */
         public static final SimpleField<ArmadilloState> ARMADILLO_STATE = SimpleField.<ArmadilloState>builder()
             .addVersionRange(ServerVersion.V_1_20_5, ServerVersion.V_1_21_11, 17, EntityDataTypes.ARMADILLO_STATE)
@@ -1300,14 +1276,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Armor_Stand">Armor Stand on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Armor_Stand">Armor Stand on the minecraft.wiki</a>
      */
     public static class ArmorStand extends LivingEntity {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> BODY_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.VECTOR3F)
@@ -1316,7 +1291,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> BODY_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.VECTOR3F)
@@ -1324,9 +1299,8 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Wrapped by view: {@link ArmorStandClientFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link ArmorStandClientFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, ArmorStandClientFlagsView> CLIENT_FLAGS = ViewField.builder(ArmorStandClientFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 13, EntityDataTypes.BYTE)
@@ -1335,7 +1309,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> HEAD_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.VECTOR3F)
@@ -1344,7 +1318,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> HEAD_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.VECTOR3F)
@@ -1352,7 +1326,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> LEFT_ARM_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.VECTOR3F)
@@ -1361,7 +1335,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> LEFT_ARM_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.VECTOR3F)
@@ -1369,7 +1343,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> LEFT_LEG_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.VECTOR3F)
@@ -1378,7 +1352,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> LEFT_LEG_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 15, EntityDataTypes.VECTOR3F)
@@ -1386,7 +1360,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> RIGHT_ARM_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.VECTOR3F)
@@ -1395,7 +1369,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> RIGHT_ARM_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 14, EntityDataTypes.VECTOR3F)
@@ -1403,7 +1377,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3f> RIGHT_LEG_POSE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 19, EntityDataTypes.VECTOR3F)
@@ -1412,7 +1386,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3f> RIGHT_LEG_ROTATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 16, EntityDataTypes.VECTOR3F)
@@ -1420,7 +1394,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> STATUS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 10, EntityDataTypes.BYTE)
@@ -1447,14 +1421,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Arrow">Arrow on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Arrow">Arrow on the minecraft.wiki</a>
      */
     public static class Arrow extends AbstractArrow {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> CRITICAL = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.BYTE)
@@ -1462,7 +1435,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> ID_EFFECT_COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_15, 10, EntityDataTypes.INT)
@@ -1479,14 +1452,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.17 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Axolotl">Axolotl on the minecraft.wiki</a>
+     * @mcversions {@code 1.17 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Axolotl">Axolotl on the minecraft.wiki</a>
      */
     public static class Axolotl extends Animal {
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Boolean> FROM_BUCKET = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_1_21_11, 19, EntityDataTypes.BOOLEAN)
@@ -1494,7 +1466,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Boolean> PLAYING_DEAD = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_1_21_11, 18, EntityDataTypes.BOOLEAN)
@@ -1502,9 +1474,8 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Wrapped by view: {@link AxolotlVariantView}
-         * <br>
-         * Versions: {@code 1.17 - 26.2}
+         * @view {@link AxolotlVariantView}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final ViewField<Integer, AxolotlVariantView> VARIANT = ViewField.builder(AxolotlVariantView::new)
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_1_21_11, 17, EntityDataTypes.INT)
@@ -1520,16 +1491,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bat">Bat on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bat">Bat on the minecraft.wiki</a>
      */
     public static class Bat extends AmbientCreature {
 
         /**
-         * Wrapped by view: {@link BatFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link BatFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, BatFlagsView> FLAGS = ViewField.builder(BatFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -1538,7 +1507,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> HANGING = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
@@ -1553,14 +1522,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.15 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bee">Bee on the minecraft.wiki</a>
+     * @mcversions {@code 1.15 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bee">Bee on the minecraft.wiki</a>
      */
     public static class Bee extends Animal {
 
         /**
-         * Versions: {@code 1.21.11 - 26.2}
+         * @mcversions {@code 1.21.11 - 26.2}
          */
         public static final SimpleField<Long> ANGER_END_TIME = SimpleField.<Long>builder()
             .addVersionRange(ServerVersion.V_1_21_11, ServerVersion.V_1_21_11, 18, EntityDataTypes.LONG)
@@ -1568,16 +1536,15 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.15}
+         * @mcversions {@code 1.15}
          */
         public static final SimpleField<Integer> ANGER_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_15, ServerVersion.V_1_15, 17, EntityDataTypes.INT)
             .build();
 
         /**
-         * Wrapped by view: {@link BeeFlagsView}
-         * <br>
-         * Versions: {@code 1.15 - 26.2}
+         * @view {@link BeeFlagsView}
+         * @mcversions {@code 1.15 - 26.2}
          */
         public static final ViewField<Byte, BeeFlagsView> FLAGS = ViewField.builder(BeeFlagsView::new)
             .addVersionRange(ServerVersion.V_1_15, ServerVersion.V_1_16_2, 16, EntityDataTypes.BYTE)
@@ -1586,7 +1553,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16 - 1.21.9}
+         * @mcversions {@code 1.16 - 1.21.9}
          */
         public static final SimpleField<Integer> REMAINING_ANGER_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 17, EntityDataTypes.INT)
@@ -1603,16 +1570,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Blaze">Blaze on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Blaze">Blaze on the minecraft.wiki</a>
      */
     public static class Blaze extends Monster {
 
         /**
-         * Wrapped by view: {@link BlazeFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link BlazeFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, BlazeFlagsView> FLAGS = ViewField.builder(BlazeFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -1621,7 +1586,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> ON_FIRE = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
@@ -1636,7 +1601,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21 - 26.2}
+     * @mcversions {@code 1.21 - 26.2}
      */
     public static class BlockAttachedEntity extends Entity {
 
@@ -1646,16 +1611,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Display">Display on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Display">Display on the minecraft.wiki</a>
      */
     public static class Display extends Entity {
 
         /**
-         * Wrapped by view: {@link DisplayBillboardView}
-         * <br>
-         * Versions: {@code 1.19.4 - 26.2}
+         * @view {@link DisplayBillboardView}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final ViewField<Byte, DisplayBillboardView> BILLBOARD_RENDER_CONSTRAINTS = ViewField.builder(DisplayBillboardView::new)
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 14, EntityDataTypes.BYTE)
@@ -1663,7 +1626,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> BRIGHTNESS_OVERRIDE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 15, EntityDataTypes.INT)
@@ -1671,7 +1634,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> GLOW_COLOR_OVERRIDE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 21, EntityDataTypes.INT)
@@ -1679,7 +1642,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> HEIGHT = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 20, EntityDataTypes.FLOAT)
@@ -1687,21 +1650,21 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4}
+         * @mcversions {@code 1.19.4}
          */
         public static final SimpleField<Integer> INTERPOLATION_DURATION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 9, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.19.4}
+         * @mcversions {@code 1.19.4}
          */
         public static final SimpleField<Integer> INTERPOLATION_START_DELTA_TICKS = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 8, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Quaternion4f> LEFT_ROTATION = SimpleField.<Quaternion4f>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 12, EntityDataTypes.QUATERNION)
@@ -1710,14 +1673,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.20.2 - 26.2}
+         * @mcversions {@code 1.20.2 - 26.2}
          */
         public static final SimpleField<Integer> POS_ROT_INTERPOLATION_DURATION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_2, ServerVersion.V_26_2, 10, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Quaternion4f> RIGHT_ROTATION = SimpleField.<Quaternion4f>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 13, EntityDataTypes.QUATERNION)
@@ -1726,7 +1689,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Vector3f> SCALE = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 11, EntityDataTypes.VECTOR3F)
@@ -1735,7 +1698,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> SHADOW_RADIUS = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 17, EntityDataTypes.FLOAT)
@@ -1743,7 +1706,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> SHADOW_STRENGTH = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 18, EntityDataTypes.FLOAT)
@@ -1751,21 +1714,21 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.20.2 - 26.2}
+         * @mcversions {@code 1.20.2 - 26.2}
          */
         public static final SimpleField<Integer> TRANSFORMATION_INTERPOLATION_DURATION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_2, ServerVersion.V_26_2, 9, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.20.2 - 26.2}
+         * @mcversions {@code 1.20.2 - 26.2}
          */
         public static final SimpleField<Integer> TRANSFORMATION_INTERPOLATION_START_DELTA_TICKS = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_2, ServerVersion.V_26_2, 8, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Vector3f> TRANSLATION = SimpleField.<Vector3f>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 10, EntityDataTypes.VECTOR3F)
@@ -1774,7 +1737,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> VIEW_RANGE = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 16, EntityDataTypes.FLOAT)
@@ -1782,7 +1745,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> WIDTH = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 19, EntityDataTypes.FLOAT)
@@ -1812,14 +1775,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Block_Display">Block Display on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Block_Display">Block Display on the minecraft.wiki</a>
      */
     public static class BlockDisplay extends Display {
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> BLOCK_STATE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 22, EntityDataTypes.BLOCK_STATE)
@@ -1833,14 +1795,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Boat">Boat on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Boat">Boat on the minecraft.wiki</a>
      */
     public static class Boat extends AbstractBoat {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> BOAT_TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 8, EntityDataTypes.INT)
@@ -1848,7 +1809,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21}
+         * @mcversions {@code 1.14.4 - 1.21}
          */
         public static final SimpleField<Integer> BUBBLE_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 13, EntityDataTypes.INT)
@@ -1856,7 +1817,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Float> DAMAGE = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 9, EntityDataTypes.FLOAT)
@@ -1864,7 +1825,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Float> DAMAGE_TAKEN = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 7, EntityDataTypes.FLOAT)
@@ -1872,7 +1833,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> FORWARD_DIRECTION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 6, EntityDataTypes.INT)
@@ -1880,7 +1841,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Integer> HURT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.INT)
@@ -1888,7 +1849,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.2}
+         * @mcversions {@code 1.14.4 - 1.20.2}
          */
         public static final SimpleField<Integer> HURTDIR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 8, EntityDataTypes.INT)
@@ -1896,7 +1857,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21}
+         * @mcversions {@code 1.14.4 - 1.21}
          */
         public static final SimpleField<Boolean> PADDLE_LEFT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 11, EntityDataTypes.BOOLEAN)
@@ -1904,7 +1865,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21}
+         * @mcversions {@code 1.14.4 - 1.21}
          */
         public static final SimpleField<Boolean> PADDLE_RIGHT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 12, EntityDataTypes.BOOLEAN)
@@ -1912,7 +1873,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> TIME_SINCE_HIT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.INT)
@@ -1920,7 +1881,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21}
+         * @mcversions {@code 1.14.4 - 1.21}
          */
         public static final SimpleField<Integer> TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 10, EntityDataTypes.INT)
@@ -1944,14 +1905,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.5 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bogged">Bogged on the minecraft.wiki</a>
+     * @mcversions {@code 1.20.5 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Bogged">Bogged on the minecraft.wiki</a>
      */
     public static class Bogged extends AbstractSkeleton {
 
         /**
-         * Versions: {@code 1.20.5 - 26.2}
+         * @mcversions {@code 1.20.5 - 26.2}
          */
         public static final SimpleField<Boolean> SHEARED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_20_5, ServerVersion.V_26_2, 16, EntityDataTypes.BOOLEAN)
@@ -1964,9 +1924,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.3 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Breeze">Breeze on the minecraft.wiki</a>
+     * @mcversions {@code 1.20.3 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Breeze">Breeze on the minecraft.wiki</a>
      */
     public static class Breeze extends Monster {
 
@@ -1976,7 +1935,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.5 - 26.2}
+     * @mcversions {@code 1.20.5 - 26.2}
      */
     public static class BreezeWindCharge extends AbstractWindCharge {
 
@@ -1986,14 +1945,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.3 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Camel">Camel on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.3 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Camel">Camel on the minecraft.wiki</a>
      */
     public static class Camel extends AbstractHorse {
 
         /**
-         * Versions: {@code 1.19.3 - 26.2}
+         * @mcversions {@code 1.19.3 - 26.2}
          */
         public static final SimpleField<Boolean> DASH = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19_3, ServerVersion.V_1_19_3, 19, EntityDataTypes.BOOLEAN)
@@ -2002,7 +1960,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.3 - 26.2}
+         * @mcversions {@code 1.19.3 - 26.2}
          */
         public static final SimpleField<Long> LAST_POSE_CHANGE_TICK = SimpleField.<Long>builder()
             .addVersionRange(ServerVersion.V_1_19_3, ServerVersion.V_1_19_3, 20, EntityDataTypes.LONG)
@@ -2018,9 +1976,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.11 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Camel_Husk">Camel Husk on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.11 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Camel_Husk">Camel Husk on the minecraft.wiki</a>
      */
     public static class CamelHusk extends Camel {
 
@@ -2030,14 +1987,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cat">Cat on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cat">Cat on the minecraft.wiki</a>
      */
     public static class Cat extends TamableAnimal {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> COLLAR_COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 20, EntityDataTypes.INT)
@@ -2047,7 +2003,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_LYING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.BOOLEAN)
@@ -2057,7 +2013,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> RELAX_STATE_ONE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 19, EntityDataTypes.BOOLEAN)
@@ -2067,14 +2023,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<CatSoundVariant> SOUND_VARIANT = SimpleField.<CatSoundVariant>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 24, EntityDataTypes.CAT_SOUND_VARIANT)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.17}
+         * @mcversions {@code 1.14.4 - 1.17}
          */
         public static final SimpleField<Integer> TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.INT)
@@ -2083,7 +2039,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<CatVariant> VARIANT = SimpleField.<CatVariant>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_20_3, 19, EntityDataTypes.TYPED_CAT_VARIANT)
@@ -2103,14 +2059,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spider">Spider on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spider">Spider on the minecraft.wiki</a>
      */
     public static class Spider extends Monster {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> CLIMBING = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
@@ -2118,7 +2073,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -2134,9 +2089,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cave_Spider">Cave Spider on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cave_Spider">Cave Spider on the minecraft.wiki</a>
      */
     public static class CaveSpider extends Spider {
 
@@ -2146,7 +2100,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19 - 26.2}
+     * @mcversions {@code 1.19 - 26.2}
      */
     public static class ChestBoat extends AbstractChestBoat {
 
@@ -2156,7 +2110,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
+     * @mcversions {@code 1.21.2 - 26.2}
      */
     public static class ChestRaft extends AbstractChestBoat {
 
@@ -2166,21 +2120,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Chicken">Chicken on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Chicken">Chicken on the minecraft.wiki</a>
      */
     public static class Chicken extends Animal {
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<ChickenSoundVariant> SOUND_VARIANT = SimpleField.<ChickenSoundVariant>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 19, EntityDataTypes.CHICKEN_SOUND_VARIANT)
             .build();
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<ChickenVariant> VARIANT = SimpleField.<ChickenVariant>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_1_21_11, 17, EntityDataTypes.CHICKEN_VARIANT)
@@ -2195,28 +2148,27 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.9 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mannequin">Mannequin on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.9 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mannequin">Mannequin on the minecraft.wiki</a>
      */
     public static class Mannequin extends Avatar {
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<Optional<Component>> DESCRIPTION = SimpleField.<Optional<Component>>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 19, EntityDataTypes.OPTIONAL_ADV_COMPONENT)
             .build();
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<Boolean> IMMOVABLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 18, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<ItemProfile> PROFILE = SimpleField.<ItemProfile>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 17, EntityDataTypes.RESOLVABLE_PROFILE)
@@ -2231,7 +2183,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.9 - 26.2}
+     * @mcversions {@code 1.21.9 - 26.2}
      */
     public static class ClientMannequin extends Mannequin {
 
@@ -2241,9 +2193,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cod">Cod on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cod">Cod on the minecraft.wiki</a>
      */
     public static class Cod extends AbstractSchoolingFish {
 
@@ -2253,21 +2204,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.9 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Copper_Golem">Copper Golem on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.9 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Copper_Golem">Copper Golem on the minecraft.wiki</a>
      */
     public static class CopperGolem extends AbstractGolem {
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<CopperGolemState> COPPER_GOLEM_STATE = SimpleField.<CopperGolemState>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 17, EntityDataTypes.COPPER_GOLEM_STATE)
             .build();
 
         /**
-         * Versions: {@code 1.21.9 - 26.2}
+         * @mcversions {@code 1.21.9 - 26.2}
          */
         public static final SimpleField<WeatheringCopperState> WEATHER_STATE = SimpleField.<WeatheringCopperState>builder()
             .addVersionRange(ServerVersion.V_1_21_9, ServerVersion.V_26_2, 16, EntityDataTypes.WEATHERING_COPPER_STATE)
@@ -2281,21 +2231,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cow">Cow on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Cow">Cow on the minecraft.wiki</a>
      */
     public static class Cow extends AbstractCow {
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<CowSoundVariant> SOUND_VARIANT = SimpleField.<CowSoundVariant>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 19, EntityDataTypes.COW_SOUND_VARIANT)
             .build();
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<CowVariant> VARIANT = SimpleField.<CowVariant>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_1_21_11, 17, EntityDataTypes.COW_VARIANT)
@@ -2310,35 +2259,34 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Creaking">Creaking on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Creaking">Creaking on the minecraft.wiki</a>
      */
     public static class Creaking extends Monster {
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Boolean> CAN_MOVE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 16, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.21.4 - 26.2}
+         * @mcversions {@code 1.21.4 - 26.2}
          */
         public static final SimpleField<Optional<Vector3i>> HOME_POS = SimpleField.<Optional<Vector3i>>builder()
             .addVersionRange(ServerVersion.V_1_21_4, ServerVersion.V_26_2, 19, EntityDataTypes.OPTIONAL_BLOCK_POSITION)
             .build();
 
         /**
-         * Versions: {@code 1.21.2 - 26.2}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final SimpleField<Boolean> IS_ACTIVE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_2, ServerVersion.V_26_2, 17, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.21.4 - 26.2}
+         * @mcversions {@code 1.21.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_TEARING_DOWN = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_4, ServerVersion.V_26_2, 18, EntityDataTypes.BOOLEAN)
@@ -2354,7 +2302,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2}
+     * @mcversions {@code 1.21.2}
      */
     public static class CreakingTransient extends Creaking {
 
@@ -2364,14 +2312,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Creeper">Creeper on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Creeper">Creeper on the minecraft.wiki</a>
      */
     public static class Creeper extends Monster {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> IGNITED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.BOOLEAN)
@@ -2379,7 +2326,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_IGNITED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BOOLEAN)
@@ -2388,7 +2335,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_POWERED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -2397,7 +2344,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> POWERED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BOOLEAN)
@@ -2405,7 +2352,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> STATE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
@@ -2413,9 +2360,8 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Wrapped by view: {@link CreeperSwellStateView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link CreeperSwellStateView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Integer, CreeperSwellStateView> SWELL_DIR = ViewField.builder(CreeperSwellStateView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.INT)
@@ -2435,14 +2381,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Dolphin">Dolphin on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Dolphin">Dolphin on the minecraft.wiki</a>
      */
     public static class Dolphin extends AgeableWaterCreature {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> GOT_FISH = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -2454,7 +2399,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> MOISTNESS_LEVEL = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.INT)
@@ -2466,7 +2411,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Vector3i> TREASURE_POS = SimpleField.<Vector3i>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BLOCK_POSITION)
@@ -2484,9 +2429,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Donkey">Donkey on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Donkey">Donkey on the minecraft.wiki</a>
      */
     public static class Donkey extends AbstractChestedHorse {
 
@@ -2496,9 +2440,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Dragon_Fireball">Dragon Fireball on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Dragon_Fireball">Dragon Fireball on the minecraft.wiki</a>
      */
     public static class DragonFireball extends AbstractHurtingProjectile {
 
@@ -2508,21 +2451,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie">Zombie on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie">Zombie on the minecraft.wiki</a>
      */
     public static class Zombie extends Monster {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> ARMS_RAISED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_12_2, 14, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> BABY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BOOLEAN)
@@ -2531,14 +2473,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Boolean> CONVERTING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> DROWNED_CONVERSION = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BOOLEAN)
@@ -2547,7 +2489,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> IS_CHILD = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -2555,7 +2497,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> SPECIAL_TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -2564,7 +2506,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> VILLAGER_TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.INT)
@@ -2584,9 +2526,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Drowned">Drowned on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Drowned">Drowned on the minecraft.wiki</a>
      */
     public static class Drowned extends Zombie {
 
@@ -2596,14 +2537,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Guardian">Guardian on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Guardian">Guardian on the minecraft.wiki</a>
      */
     public static class Guardian extends Monster {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> ATTACK_TARGET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -2612,7 +2552,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2 - 26.2}
+         * @mcversions {@code 1.12.2 - 26.2}
          */
         public static final SimpleField<Boolean> MOVING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 12, EntityDataTypes.BOOLEAN)
@@ -2622,14 +2562,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Byte> STATUS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> TARGET_ENTITY = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_12, 12, EntityDataTypes.INT)
@@ -2646,9 +2586,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Elder_Guardian">Elder Guardian on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Elder_Guardian">Elder Guardian on the minecraft.wiki</a>
      */
     public static class ElderGuardian extends Guardian {
 
@@ -2658,14 +2597,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#End_Crystal">End Crystal on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#End_Crystal">End Crystal on the minecraft.wiki</a>
      */
     public static class EndCrystal extends Entity {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<Vector3i>> BEAM_TARGET = SimpleField.<Optional<Vector3i>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.OPTIONAL_BLOCK_POSITION)
@@ -2673,7 +2611,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Boolean> SHOW_BOTTOM = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.BOOLEAN)
@@ -2690,16 +2628,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ender_Dragon">Ender Dragon on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ender_Dragon">Ender Dragon on the minecraft.wiki</a>
      */
     public static class EnderDragon extends Mob {
 
         /**
-         * Wrapped by view: {@link EnderDragonPhaseView}
-         * <br>
-         * Versions: {@code 1.9.4 - 26.2}
+         * @view {@link EnderDragonPhaseView}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final ViewField<Integer, EnderDragonPhaseView> PHASE = ViewField.builder(EnderDragonPhaseView::new)
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
@@ -2716,7 +2652,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.11.2, 1.14.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 1.11.2, 1.14.4 - 26.2}
      */
     public static class EnderDragonPart extends Entity {
 
@@ -2726,12 +2662,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class EnderMan extends Monster {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> CARRY_STATE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.OPTIONAL_BLOCK_STATE)
@@ -2740,7 +2676,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> CREEPY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -2749,7 +2685,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> SCREAMING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -2757,7 +2693,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.15 - 26.2}
+         * @mcversions {@code 1.15 - 26.2}
          */
         public static final SimpleField<Boolean> STARED_AT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_15, ServerVersion.V_1_16_2, 17, EntityDataTypes.BOOLEAN)
@@ -2774,9 +2710,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Endermite">Endermite on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Endermite">Endermite on the minecraft.wiki</a>
      */
     public static class Endermite extends Monster {
 
@@ -2786,7 +2721,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityOtherPlayerMP extends AbstractClientPlayer {
 
@@ -2796,7 +2731,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 26.2}
+     * @mcversions {@code 1.12 - 26.2}
      */
     public static class ShoulderRidingEntity extends TamableAnimal {
 
@@ -2806,12 +2741,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 1.12.2}
+     * @mcversions {@code 1.12 - 1.12.2}
      */
     public static class EntityParrot extends ShoulderRidingEntity {
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Integer> VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 14, EntityDataTypes.INT)
@@ -2824,19 +2759,19 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityPig extends Animal {
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Integer> BOOST_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 14, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> SADDLED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BOOLEAN)
@@ -2851,7 +2786,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityPlayerMP extends Player {
 
@@ -2861,7 +2796,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityPlayerSP extends AbstractClientPlayer {
 
@@ -2871,12 +2806,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityPotion extends ThrowableItemProjectile {
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<ItemStack> ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 6, EntityDataTypes.ITEMSTACK)
@@ -2889,12 +2824,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class EntityTippedArrow extends Arrow {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 6, EntityDataTypes.INT)
@@ -2908,23 +2843,21 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spellcaster_Illager">Spellcaster Illager on the minecraft.wiki</a>
+     * @mcversions {@code 1.12 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spellcaster_Illager">Spellcaster Illager on the minecraft.wiki</a>
      */
     public static class SpellcasterIllager extends AbstractIllager {
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Byte> SPELL = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 13, EntityDataTypes.BYTE)
             .build();
 
         /**
-         * Wrapped by view: {@link SpellcasterIllagerSpellCastingView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link SpellcasterIllagerSpellCastingView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, SpellcasterIllagerSpellCastingView> SPELL_CASTING = ViewField.builder(SpellcasterIllagerSpellCastingView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BYTE)
@@ -2940,9 +2873,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Evoker">Evoker on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Evoker">Evoker on the minecraft.wiki</a>
      */
     public static class Evoker extends SpellcasterIllager {
 
@@ -2952,9 +2884,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Evoker_Fangs">Evoker Fangs on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Evoker_Fangs">Evoker Fangs on the minecraft.wiki</a>
      */
     public static class EvokerFangs extends Entity {
 
@@ -2964,14 +2895,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Experience_Orb">Experience Orb on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Experience_Orb">Experience Orb on the minecraft.wiki</a>
      */
     public static class ExperienceOrb extends Entity {
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<Integer> VALUE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_26_2, 8, EntityDataTypes.INT)
@@ -2984,12 +2914,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class EyeOfEnder extends Entity {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM_STACK = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.ITEMSTACK)
@@ -3003,12 +2933,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class FallingBlockEntity extends Entity {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Vector3i> ORIGIN = SimpleField.<Vector3i>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.BLOCK_POSITION)
@@ -3016,7 +2946,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Vector3i> START_POS = SimpleField.<Vector3i>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.BLOCK_POSITION)
@@ -3031,14 +2961,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Fireball">Fireball on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Fireball">Fireball on the minecraft.wiki</a>
      */
     public static class Fireball extends AbstractHurtingProjectile {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM_STACK = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.ITEMSTACK)
@@ -3052,12 +2981,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class FireworkRocketEntity extends Projectile {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<Integer>> ATTACHED_TO_TARGET = SimpleField.<Optional<Integer>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 8, EntityDataTypes.OPTIONAL_INT)
@@ -3065,14 +2994,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Integer> BOOSTED_ENTITY = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 7, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<ItemStack> FIREWORKS_ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.ITEMSTACK)
@@ -3080,14 +3009,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<ItemStack> FIREWORK_ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 6, EntityDataTypes.ITEMSTACK)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> SHOT_AT_ANGLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 9, EntityDataTypes.BOOLEAN)
@@ -3105,12 +3034,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class FishingHook extends Projectile {
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> BITING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 8, EntityDataTypes.BOOLEAN)
@@ -3118,7 +3047,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Integer> HOOKED_ENTITY = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.INT)
@@ -3135,7 +3064,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.21.5}
+     * @mcversions {@code 1.9.4 - 1.21.5}
      */
     public static class FlyingMob extends Mob {
 
@@ -3145,14 +3074,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Fox">Fox on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Fox">Fox on the minecraft.wiki</a>
      */
     public static class Fox extends Animal {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BYTE)
@@ -3162,7 +3090,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<UUID>> TRUSTED_0 = SimpleField.<Optional<UUID>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.OPTIONAL_UUID)
@@ -3173,7 +3101,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Optional<UUID>> TRUSTED_1 = SimpleField.<Optional<UUID>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.OPTIONAL_UUID)
@@ -3184,7 +3112,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -3203,14 +3131,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Frog">Frog on the minecraft.wiki</a>
+     * @mcversions {@code 1.19 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Frog">Frog on the minecraft.wiki</a>
      */
     public static class Frog extends Animal {
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<Optional<Integer>> TONGUE_TARGET = SimpleField.<Optional<Integer>>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_21_11, 18, EntityDataTypes.OPTIONAL_INT)
@@ -3218,7 +3145,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<FrogVariant> VARIANT = SimpleField.<FrogVariant>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_20_3, 17, EntityDataTypes.TYPED_FROG_VARIANT)
@@ -3234,14 +3161,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ghast">Ghast on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ghast">Ghast on the minecraft.wiki</a>
      */
     public static class Ghast extends Mob {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> ATTACKING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -3249,7 +3175,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_CHARGING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BOOLEAN)
@@ -3265,9 +3191,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Giant">Giant on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Giant">Giant on the minecraft.wiki</a>
      */
     public static class Giant extends Monster {
 
@@ -3277,12 +3202,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class HangingEntity extends BlockAttachedEntity {
 
         /**
-         * Versions: {@code 1.21.6 - 26.2}
+         * @mcversions {@code 1.21.6 - 26.2}
          */
         public static final SimpleField<BlockFace> DIRECTION = SimpleField.<BlockFace>builder()
             .addVersionRange(ServerVersion.V_1_21_6, ServerVersion.V_26_2, 8, EntityDataTypes.BLOCK_FACE)
@@ -3295,14 +3220,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Item_Frame">Item Frame on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Item_Frame">Item Frame on the minecraft.wiki</a>
      */
     public static class ItemFrame extends HangingEntity {
 
         /**
-         * Versions: {@code 1.11.2 - 26.2}
+         * @mcversions {@code 1.11.2 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 6, EntityDataTypes.ITEMSTACK)
@@ -3312,7 +3236,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Integer> ROTATION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.INT)
@@ -3330,9 +3254,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.17 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Glow_Item_Frame">Glow Item Frame on the minecraft.wiki</a>
+     * @mcversions {@code 1.17 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Glow_Item_Frame">Glow Item Frame on the minecraft.wiki</a>
      */
     public static class GlowItemFrame extends ItemFrame {
 
@@ -3342,9 +3265,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Squid">Squid on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Squid">Squid on the minecraft.wiki</a>
      */
     public static class Squid extends AgeableWaterCreature {
 
@@ -3354,14 +3276,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.17 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Glow_Squid">Glow Squid on the minecraft.wiki</a>
+     * @mcversions {@code 1.17 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Glow_Squid">Glow Squid on the minecraft.wiki</a>
      */
     public static class GlowSquid extends Squid {
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Integer> DARK_TICKS_REMAINING = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_1_21, 16, EntityDataTypes.INT)
@@ -3376,14 +3297,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.17 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Goat">Goat on the minecraft.wiki</a>
+     * @mcversions {@code 1.17 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Goat">Goat on the minecraft.wiki</a>
      */
     public static class Goat extends Animal {
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<Boolean> HAS_LEFT_HORN = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_21_11, 18, EntityDataTypes.BOOLEAN)
@@ -3391,7 +3311,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<Boolean> HAS_RIGHT_HORN = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_21_11, 19, EntityDataTypes.BOOLEAN)
@@ -3399,7 +3319,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Boolean> IS_SCREAMING_GOAT = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_1_21_11, 17, EntityDataTypes.BOOLEAN)
@@ -3415,14 +3335,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.6 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Happy_Ghast">Happy Ghast on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.6 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Happy_Ghast">Happy Ghast on the minecraft.wiki</a>
      */
     public static class HappyGhast extends Animal {
 
         /**
-         * Versions: {@code 1.21.6 - 26.2}
+         * @mcversions {@code 1.21.6 - 26.2}
          */
         public static final SimpleField<Boolean> IS_LEASH_HOLDER = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_6, ServerVersion.V_1_21_11, 17, EntityDataTypes.BOOLEAN)
@@ -3430,7 +3349,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.21.6 - 26.2}
+         * @mcversions {@code 1.21.6 - 26.2}
          */
         public static final SimpleField<Boolean> STAYS_STILL = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_21_6, ServerVersion.V_1_21_11, 18, EntityDataTypes.BOOLEAN)
@@ -3445,14 +3364,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Hoglin">Hoglin on the minecraft.wiki</a>
+     * @mcversions {@code 1.16 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Hoglin">Hoglin on the minecraft.wiki</a>
      */
     public static class Hoglin extends Animal {
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> IMMUNE_TO_ZOMBIFICATION = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 16, EntityDataTypes.BOOLEAN)
@@ -3467,42 +3385,41 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Horse">Horse on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Horse">Horse on the minecraft.wiki</a>
      */
     public static class Horse extends AbstractHorse {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> HORSE_ARMOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_12_2, 15, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Integer> HORSE_TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> HORSE_VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_12_2, 14, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Byte> STATUS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BYTE)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TYPE_VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.INT)
@@ -3523,9 +3440,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Husk">Husk on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Husk">Husk on the minecraft.wiki</a>
      */
     public static class Husk extends Zombie {
 
@@ -3535,9 +3451,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Illusioner">Illusioner on the minecraft.wiki</a>
+     * @mcversions {@code 1.12 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Illusioner">Illusioner on the minecraft.wiki</a>
      */
     public static class Illusioner extends SpellcasterIllager {
 
@@ -3547,28 +3462,27 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Interaction">Interaction on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Interaction">Interaction on the minecraft.wiki</a>
      */
     public static class Interaction extends Entity {
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> HEIGHT = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_26_2, 9, EntityDataTypes.FLOAT)
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Boolean> RESPONSE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_26_2, 10, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Float> WIDTH = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_26_2, 8, EntityDataTypes.FLOAT)
@@ -3583,14 +3497,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Iron_Golem">Iron Golem on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Iron_Golem">Iron Golem on the minecraft.wiki</a>
      */
     public static class IronGolem extends AbstractGolem {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -3599,7 +3512,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> PLAYER_CREATED = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
@@ -3614,14 +3527,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Item_Display">Item Display on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Item_Display">Item Display on the minecraft.wiki</a>
      */
     public static class ItemDisplay extends Display {
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Byte> ITEM_DISPLAY = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 23, EntityDataTypes.BYTE)
@@ -3629,7 +3541,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM_STACK = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 22, EntityDataTypes.ITEMSTACK)
@@ -3644,12 +3556,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class ItemEntity extends Entity {
 
         /**
-         * Versions: {@code 1.11.2 - 26.2}
+         * @mcversions {@code 1.11.2 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 6, EntityDataTypes.ITEMSTACK)
@@ -3664,7 +3576,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class LargeFireball extends Fireball {
 
@@ -3674,7 +3586,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class LeashFenceKnotEntity extends BlockAttachedEntity {
 
@@ -3684,9 +3596,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Lightning_Bolt">Lightning Bolt on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Lightning_Bolt">Lightning Bolt on the minecraft.wiki</a>
      */
     public static class LightningBolt extends Entity {
 
@@ -3696,21 +3607,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Llama">Llama on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Llama">Llama on the minecraft.wiki</a>
      */
     public static class Llama extends AbstractChestedHorse {
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Integer> COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 16, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.12.2 - 26.2}
+         * @mcversions {@code 1.12.2 - 26.2}
          */
         public static final SimpleField<Integer> STRENGTH = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 15, EntityDataTypes.INT)
@@ -3722,7 +3632,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.20.3}
+         * @mcversions {@code 1.14.4 - 1.20.3}
          */
         public static final SimpleField<Integer> SWAG = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 19, EntityDataTypes.INT)
@@ -3732,7 +3642,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2 - 26.2}
+         * @mcversions {@code 1.12.2 - 26.2}
          */
         public static final SimpleField<Integer> VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 17, EntityDataTypes.INT)
@@ -3754,9 +3664,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Llama_Spit">Llama Spit on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Llama_Spit">Llama Spit on the minecraft.wiki</a>
      */
     public static class LlamaSpit extends Projectile {
 
@@ -3766,7 +3675,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class LocalPlayer extends AbstractClientPlayer {
 
@@ -3776,9 +3685,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Magma_Cube">Magma Cube on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Magma_Cube">Magma Cube on the minecraft.wiki</a>
      */
     public static class MagmaCube extends AbstractCubeMob {
 
@@ -3788,9 +3696,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.17 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Marker">Marker on the minecraft.wiki</a>
+     * @mcversions {@code 1.17 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Marker">Marker on the minecraft.wiki</a>
      */
     public static class Marker extends Entity {
 
@@ -3800,14 +3707,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Minecart">Minecart on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Minecart">Minecart on the minecraft.wiki</a>
      */
     public static class Minecart extends AbstractMinecart {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Float> DAMAGE = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 7, EntityDataTypes.FLOAT)
@@ -3815,7 +3721,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> DISPLAY_TILE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 8, EntityDataTypes.INT)
@@ -3823,7 +3729,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> DISPLAY_TILE_OFFSET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 9, EntityDataTypes.INT)
@@ -3831,7 +3737,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> ROLLING_AMPLITUDE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.INT)
@@ -3839,7 +3745,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> ROLLING_DIRECTION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 6, EntityDataTypes.INT)
@@ -3847,7 +3753,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> SHOW_BLOCK = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 10, EntityDataTypes.BOOLEAN)
@@ -3866,7 +3772,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartChest extends AbstractMinecartContainer {
 
@@ -3876,12 +3782,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartCommandBlock extends AbstractMinecart {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<String> COMMAND = SimpleField.<String>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.STRING)
@@ -3889,7 +3795,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<String> COMMAND_NAME = SimpleField.<String>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 13, EntityDataTypes.STRING)
@@ -3898,7 +3804,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Component> LAST_OUTPUT = SimpleField.<Component>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.ADV_COMPONENT)
@@ -3917,12 +3823,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartFurnace extends AbstractMinecart {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> FUEL = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 13, EntityDataTypes.BOOLEAN)
@@ -3931,7 +3837,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> POWERED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -3946,7 +3852,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartHopper extends AbstractMinecartContainer {
 
@@ -3956,7 +3862,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartSpawner extends AbstractMinecart {
 
@@ -3966,7 +3872,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MinecartTNT extends AbstractMinecart {
 
@@ -3976,9 +3882,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mule">Mule on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Mule">Mule on the minecraft.wiki</a>
      */
     public static class Mule extends AbstractChestedHorse {
 
@@ -3988,7 +3893,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.12 - 1.12.2}
+     * @mcversions {@code 1.12 - 1.12.2}
      */
     public static class MultiPartEntityPart extends Entity {
 
@@ -3998,12 +3903,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class MushroomCow extends AbstractCow {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TYPE = SimpleField.<Integer>builder()
             // TODO type changed from 'String' to 'Integer', converter required
@@ -4020,9 +3925,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.11 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Nautilus">Nautilus on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.11 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Nautilus">Nautilus on the minecraft.wiki</a>
      */
     public static class Nautilus extends AbstractNautilus {
 
@@ -4032,14 +3936,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ocelot">Ocelot on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ocelot">Ocelot on the minecraft.wiki</a>
      */
     public static class Ocelot extends Animal {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> OCELOT_VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.INT)
@@ -4047,7 +3950,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> TRUSTING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -4064,14 +3967,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.5 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ominous_Item_Spawner">Ominous Item Spawner on the minecraft.wiki</a>
+     * @mcversions {@code 1.20.5 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ominous_Item_Spawner">Ominous Item Spawner on the minecraft.wiki</a>
      */
     public static class OminousItemSpawner extends Entity {
 
         /**
-         * Versions: {@code 1.20.5 - 26.2}
+         * @mcversions {@code 1.20.5 - 26.2}
          */
         public static final SimpleField<ItemStack> ITEM = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_20_5, ServerVersion.V_26_2, 8, EntityDataTypes.ITEMSTACK)
@@ -4084,14 +3986,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Painting">Painting on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Painting">Painting on the minecraft.wiki</a>
      */
     public static class Painting extends HangingEntity {
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<PaintingVariant> PAINTING_VARIANT = SimpleField.<PaintingVariant>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_1_21_5, 8, EntityDataTypes.PAINTING_VARIANT)
@@ -4105,14 +4006,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Panda">Panda on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Panda">Panda on the minecraft.wiki</a>
      */
     public static class Panda extends Animal {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> EAT_COUNTER = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.INT)
@@ -4122,7 +4022,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 20, EntityDataTypes.BYTE)
@@ -4132,7 +4032,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> HIDDEN_GENE = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 19, EntityDataTypes.BYTE)
@@ -4142,7 +4042,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> MAIN_GENE = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.BYTE)
@@ -4152,7 +4052,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> SNEEZE_COUNTER = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.INT)
@@ -4162,7 +4062,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> UNHAPPY_COUNTER = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -4183,9 +4083,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.11 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Parched">Parched on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.11 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Parched">Parched on the minecraft.wiki</a>
      */
     public static class Parched extends AbstractSkeleton {
 
@@ -4195,16 +4094,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Parrot">Parrot on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Parrot">Parrot on the minecraft.wiki</a>
      */
     public static class Parrot extends ShoulderRidingEntity {
 
         /**
-         * Wrapped by view: {@link ParrotVariantView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link ParrotVariantView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Integer, ParrotVariantView> VARIANT = ViewField.builder(ParrotVariantView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.INT)
@@ -4220,14 +4117,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Phantom">Phantom on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Phantom">Phantom on the minecraft.wiki</a>
      */
     public static class Phantom extends Mob {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> ID_SIZE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.INT)
@@ -4242,14 +4138,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pig">Pig on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pig">Pig on the minecraft.wiki</a>
      */
     public static class Pig extends Animal {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> BOOST_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.INT)
@@ -4260,7 +4155,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Boolean> SADDLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -4269,14 +4164,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<PigSoundVariant> SOUND_VARIANT = SimpleField.<PigSoundVariant>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 20, EntityDataTypes.PIG_SOUND_VARIANT)
             .build();
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<PigVariant> VARIANT = SimpleField.<PigVariant>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_1_21_11, 18, EntityDataTypes.PIG_VARIANT)
@@ -4293,14 +4188,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Piglin">Piglin on the minecraft.wiki</a>
+     * @mcversions {@code 1.16 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Piglin">Piglin on the minecraft.wiki</a>
      */
     public static class Piglin extends AbstractPiglin {
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> BABY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16, 15, EntityDataTypes.BOOLEAN)
@@ -4309,14 +4203,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16}
+         * @mcversions {@code 1.16}
          */
         public static final SimpleField<Boolean> IMMUNE_TO_ZOMBIFICATION = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16, 16, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> IS_CHARGING_CROSSBOW = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 17, EntityDataTypes.BOOLEAN)
@@ -4324,7 +4218,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> IS_DANCING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 18, EntityDataTypes.BOOLEAN)
@@ -4341,9 +4235,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Piglin_Brute">Piglin Brute on the minecraft.wiki</a>
+     * @mcversions {@code 1.16.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Piglin_Brute">Piglin Brute on the minecraft.wiki</a>
      */
     public static class PiglinBrute extends AbstractPiglin {
 
@@ -4353,14 +4246,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pillager">Pillager on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pillager">Pillager on the minecraft.wiki</a>
      */
     public static class Pillager extends AbstractIllager {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> IS_CHARGING_CROSSBOW = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -4375,21 +4267,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.10 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Polar_Bear">Polar Bear on the minecraft.wiki</a>
+     * @mcversions {@code 1.10 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Polar_Bear">Polar Bear on the minecraft.wiki</a>
      */
     public static class PolarBear extends Animal {
 
         /**
-         * Versions: {@code 1.11.2 - 1.12.2}
+         * @mcversions {@code 1.11.2 - 1.12.2}
          */
         public static final SimpleField<Boolean> IS_STANDING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 13, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> STANDING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -4406,19 +4297,19 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class PrimedTnt extends Entity {
 
         /**
-         * Versions: {@code 1.20.3 - 26.2}
+         * @mcversions {@code 1.20.3 - 26.2}
          */
         public static final SimpleField<Integer> BLOCK_STATE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_20_3, ServerVersion.V_26_2, 9, EntityDataTypes.BLOCK_STATE)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Integer> FUSE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.INT)
@@ -4435,14 +4326,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pufferfish">Pufferfish on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Pufferfish">Pufferfish on the minecraft.wiki</a>
      */
     public static class Pufferfish extends AbstractFish {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> PUFF_STATE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -4457,14 +4347,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Rabbit">Rabbit on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Rabbit">Rabbit on the minecraft.wiki</a>
      */
     public static class Rabbit extends Animal {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> RABBIT_TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.INT)
@@ -4472,7 +4361,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TYPE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -4489,7 +4378,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.2 - 26.2}
+     * @mcversions {@code 1.21.2 - 26.2}
      */
     public static class Raft extends AbstractBoat {
 
@@ -4499,9 +4388,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ravager">Ravager on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Ravager">Ravager on the minecraft.wiki</a>
      */
     public static class Ravager extends Raider {
 
@@ -4511,7 +4399,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class RemotePlayer extends AbstractClientPlayer {
 
@@ -4521,16 +4409,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Salmon">Salmon on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Salmon">Salmon on the minecraft.wiki</a>
      */
     public static class Salmon extends AbstractSchoolingFish {
 
         /**
-         * Wrapped by view: {@link SalmonTypeView}
-         * <br>
-         * Versions: {@code 1.21.2 - 26.2}
+         * @view {@link SalmonTypeView}
+         * @mcversions {@code 1.21.2 - 26.2}
          */
         public static final ViewField<Integer, SalmonTypeView> TYPE = ViewField.builder(SalmonTypeView::new)
             // TODO type changed from 'String' to 'Integer', converter required
@@ -4544,7 +4430,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class ServerPlayer extends Player {
 
@@ -4554,14 +4440,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sheep">Sheep on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sheep">Sheep on the minecraft.wiki</a>
      */
     public static class Sheep extends Animal {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> DYE_COLOR = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BYTE)
@@ -4569,7 +4454,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> WOOL = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BYTE)
@@ -4586,14 +4471,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Shulker">Shulker on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Shulker">Shulker on the minecraft.wiki</a>
      */
     public static class Shulker extends AbstractGolem {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<BlockFace> ATTACHED_FACE = SimpleField.<BlockFace>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BLOCK_FACE)
@@ -4601,7 +4485,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<BlockFace> ATTACH_FACE = SimpleField.<BlockFace>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BLOCK_FACE)
@@ -4610,7 +4494,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.16.2}
+         * @mcversions {@code 1.14.4 - 1.16.2}
          */
         public static final SimpleField<Optional<Vector3i>> ATTACH_POS = SimpleField.<Optional<Vector3i>>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.OPTIONAL_BLOCK_POSITION)
@@ -4618,7 +4502,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2 - 26.2}
+         * @mcversions {@code 1.12.2 - 26.2}
          */
         public static final SimpleField<Byte> COLOR = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 14, EntityDataTypes.BYTE)
@@ -4627,7 +4511,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> PEEK = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BYTE)
@@ -4635,7 +4519,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> PEEK_TICK = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BYTE)
@@ -4654,9 +4538,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Shulker_Bullet">Shulker Bullet on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Shulker_Bullet">Shulker Bullet on the minecraft.wiki</a>
      */
     public static class ShulkerBullet extends Projectile {
 
@@ -4666,9 +4549,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Silverfish">Silverfish on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Silverfish">Silverfish on the minecraft.wiki</a>
      */
     public static class Silverfish extends Monster {
 
@@ -4678,28 +4560,27 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Skeleton">Skeleton on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Skeleton">Skeleton on the minecraft.wiki</a>
      */
     public static class Skeleton extends AbstractSkeleton {
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Integer> SKELETON_VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.17 - 26.2}
+         * @mcversions {@code 1.17 - 26.2}
          */
         public static final SimpleField<Boolean> STRAY_CONVERSION = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_17, ServerVersion.V_26_2, 16, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.10}
+         * @mcversions {@code 1.9.4 - 1.10}
          */
         public static final SimpleField<Boolean> SWINGING_ARMS = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.BOOLEAN)
@@ -4714,9 +4595,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Skeleton_Horse">Skeleton Horse on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Skeleton_Horse">Skeleton Horse on the minecraft.wiki</a>
      */
     public static class SkeletonHorse extends AbstractHorse {
 
@@ -4726,14 +4606,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Slime">Slime on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Slime">Slime on the minecraft.wiki</a>
      */
     public static class Slime extends AbstractCubeMob {
 
         /**
-         * Versions: {@code 1.14.4 - 26.1}
+         * @mcversions {@code 1.14.4 - 26.1}
          */
         public static final SimpleField<Integer> ID_SIZE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.INT)
@@ -4742,7 +4621,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> SLIME_SIZE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
@@ -4757,9 +4636,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Small_Fireball">Small Fireball on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Small_Fireball">Small Fireball on the minecraft.wiki</a>
      */
     public static class SmallFireball extends Fireball {
 
@@ -4769,14 +4647,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sniffer">Sniffer on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sniffer">Sniffer on the minecraft.wiki</a>
      */
     public static class Sniffer extends Animal {
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> DROP_SEED_AT_TICK = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_21_11, 18, EntityDataTypes.INT)
@@ -4784,7 +4661,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<SnifferState> STATE = SimpleField.<SnifferState>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_21_11, 17, EntityDataTypes.SNIFFER_STATE)
@@ -4799,14 +4676,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Snow_Golem">Snow Golem on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Snow_Golem">Snow Golem on the minecraft.wiki</a>
      */
     public static class SnowGolem extends AbstractGolem {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> PUMPKIN = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -4815,7 +4691,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Byte> PUMPKIN_EQUIPPED = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BYTE)
@@ -4830,9 +4706,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Snowball">Snowball on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Snowball">Snowball on the minecraft.wiki</a>
      */
     public static class Snowball extends ThrowableItemProjectile {
 
@@ -4842,9 +4717,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spectral_Arrow">Spectral Arrow on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Spectral_Arrow">Spectral Arrow on the minecraft.wiki</a>
      */
     public static class SpectralArrow extends AbstractArrow {
 
@@ -4854,9 +4728,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Stray">Stray on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Stray">Stray on the minecraft.wiki</a>
      */
     public static class Stray extends AbstractSkeleton {
 
@@ -4866,14 +4739,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Strider">Strider on the minecraft.wiki</a>
+     * @mcversions {@code 1.16 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Strider">Strider on the minecraft.wiki</a>
      */
     public static class Strider extends Animal {
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Integer> BOOST_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 16, EntityDataTypes.INT)
@@ -4882,7 +4754,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16 - 1.21.4}
+         * @mcversions {@code 1.16 - 1.21.4}
          */
         public static final SimpleField<Boolean> SADDLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 18, EntityDataTypes.BOOLEAN)
@@ -4890,7 +4762,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> SUFFOCATING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 17, EntityDataTypes.BOOLEAN)
@@ -4907,21 +4779,20 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sulfur_Cube">Sulfur Cube on the minecraft.wiki</a>
+     * @mcversions {@code 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Sulfur_Cube">Sulfur Cube on the minecraft.wiki</a>
      */
     public static class SulfurCube extends AbstractCubeMob {
 
         /**
-         * Versions: {@code 26.2}
+         * @mcversions {@code 26.2}
          */
         public static final SimpleField<Boolean> FROM_BUCKET = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_26_2, ServerVersion.V_26_2, 20, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 26.2}
+         * @mcversions {@code 26.2}
          */
         public static final SimpleField<Integer> MAX_FUSE = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_26_2, ServerVersion.V_26_2, 19, EntityDataTypes.INT)
@@ -4935,14 +4806,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Tadpole">Tadpole on the minecraft.wiki</a>
+     * @mcversions {@code 1.19 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Tadpole">Tadpole on the minecraft.wiki</a>
      */
     public static class Tadpole extends AbstractFish {
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<Boolean> AGE_LOCKED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 17, EntityDataTypes.BOOLEAN)
@@ -4955,14 +4825,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Text_Display">Text Display on the minecraft.wiki</a>
+     * @mcversions {@code 1.19.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Text_Display">Text Display on the minecraft.wiki</a>
      */
     public static class TextDisplay extends Display {
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> BACKGROUND_COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 24, EntityDataTypes.INT)
@@ -4970,7 +4839,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Integer> LINE_WIDTH = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 23, EntityDataTypes.INT)
@@ -4978,7 +4847,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Byte> STYLE_FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 26, EntityDataTypes.BYTE)
@@ -4986,7 +4855,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Component> TEXT = SimpleField.<Component>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 22, EntityDataTypes.ADV_COMPONENT)
@@ -4994,7 +4863,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.19.4 - 26.2}
+         * @mcversions {@code 1.19.4 - 26.2}
          */
         public static final SimpleField<Byte> TEXT_OPACITY = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_19_4, ServerVersion.V_1_19_4, 25, EntityDataTypes.BYTE)
@@ -5012,9 +4881,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Thrown_Egg">Thrown Egg on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Thrown_Egg">Thrown Egg on the minecraft.wiki</a>
      */
     public static class ThrownEgg extends ThrowableItemProjectile {
 
@@ -5024,7 +4892,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class ThrownEnderpearl extends ThrowableItemProjectile {
 
@@ -5034,7 +4902,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class ThrownExperienceBottle extends ThrowableItemProjectile {
 
@@ -5044,7 +4912,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.5 - 26.2}
+     * @mcversions {@code 1.21.5 - 26.2}
      */
     public static class ThrownLingeringPotion extends AbstractThrownPotion {
 
@@ -5054,12 +4922,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 1.21.4}
+     * @mcversions {@code 1.14.4 - 1.21.4}
      */
     public static class ThrownPotion extends ThrowableItemProjectile {
 
         /**
-         * Versions: {@code 1.14.4 - 1.15}
+         * @mcversions {@code 1.14.4 - 1.15}
          */
         public static final SimpleField<ItemStack> ITEM_STACK = SimpleField.<ItemStack>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_15, 7, EntityDataTypes.ITEMSTACK)
@@ -5072,7 +4940,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.5 - 26.2}
+     * @mcversions {@code 1.21.5 - 26.2}
      */
     public static class ThrownSplashPotion extends AbstractThrownPotion {
 
@@ -5082,12 +4950,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
+     * @mcversions {@code 1.14.4 - 26.2}
      */
     public static class ThrownTrident extends AbstractArrow {
 
         /**
-         * Versions: {@code 1.15 - 26.2}
+         * @mcversions {@code 1.15 - 26.2}
          */
         public static final SimpleField<Boolean> ID_FOIL = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_15, ServerVersion.V_1_15, 11, EntityDataTypes.BOOLEAN)
@@ -5097,7 +4965,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Byte> ID_LOYALTY = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_15, 10, EntityDataTypes.BYTE)
@@ -5114,9 +4982,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Trader_Llama">Trader Llama on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Trader_Llama">Trader Llama on the minecraft.wiki</a>
      */
     public static class TraderLlama extends Llama {
 
@@ -5126,14 +4993,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Tropical_Fish">Tropical Fish on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Tropical_Fish">Tropical Fish on the minecraft.wiki</a>
      */
     public static class TropicalFish extends AbstractSchoolingFish {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TYPE_VARIANT = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -5148,14 +5014,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Turtle">Turtle on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Turtle">Turtle on the minecraft.wiki</a>
      */
     public static class Turtle extends Animal {
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Boolean> GOING_HOME = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 19, EntityDataTypes.BOOLEAN)
@@ -5164,7 +5029,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> HAS_EGG = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.BOOLEAN)
@@ -5175,7 +5040,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Vector3i> HOME_POS = SimpleField.<Vector3i>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BLOCK_POSITION)
@@ -5184,7 +5049,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> LAYING_EGG = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.BOOLEAN)
@@ -5195,7 +5060,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Boolean> TRAVELLING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 20, EntityDataTypes.BOOLEAN)
@@ -5204,7 +5069,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 1.21.4}
+         * @mcversions {@code 1.14.4 - 1.21.4}
          */
         public static final SimpleField<Vector3i> TRAVEL_POS = SimpleField.<Vector3i>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.BLOCK_POSITION)
@@ -5224,16 +5089,14 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Vex">Vex on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Vex">Vex on the minecraft.wiki</a>
      */
     public static class Vex extends Monster {
 
         /**
-         * Wrapped by view: {@link VexFlagsView}
-         * <br>
-         * Versions: {@code 1.14.4 - 26.2}
+         * @view {@link VexFlagsView}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final ViewField<Byte, VexFlagsView> FLAGS = ViewField.builder(VexFlagsView::new)
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.BYTE)
@@ -5242,7 +5105,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Byte> VEX_FLAGS = SimpleField.<Byte>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 12, EntityDataTypes.BYTE)
@@ -5256,14 +5119,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Villager">Villager on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Villager">Villager on the minecraft.wiki</a>
      */
     public static class Villager extends AbstractVillager {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> PROFESSION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.INT)
@@ -5271,7 +5133,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<VillagerData> VILLAGER_DATA = SimpleField.<VillagerData>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.VILLAGER_DATA)
@@ -5281,7 +5143,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<Boolean> VILLAGER_FINALIZED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 20, EntityDataTypes.BOOLEAN)
@@ -5296,9 +5158,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Vindicator">Vindicator on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Vindicator">Vindicator on the minecraft.wiki</a>
      */
     public static class Vindicator extends AbstractIllager {
 
@@ -5308,9 +5169,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.14.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wandering_Trader">Wandering Trader on the minecraft.wiki</a>
+     * @mcversions {@code 1.14.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wandering_Trader">Wandering Trader on the minecraft.wiki</a>
      */
     public static class WanderingTrader extends AbstractVillager {
 
@@ -5320,14 +5180,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.19 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Warden">Warden on the minecraft.wiki</a>
+     * @mcversions {@code 1.19 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Warden">Warden on the minecraft.wiki</a>
      */
     public static class Warden extends Monster {
 
         /**
-         * Versions: {@code 1.19 - 26.2}
+         * @mcversions {@code 1.19 - 26.2}
          */
         public static final SimpleField<Integer> CLIENT_ANGER_LEVEL = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_19, ServerVersion.V_26_2, 16, EntityDataTypes.INT)
@@ -5340,7 +5199,7 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 1.12.2}
+     * @mcversions {@code 1.9.4 - 1.12.2}
      */
     public static class WeatherEffect extends Entity {
 
@@ -5350,9 +5209,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.20.3 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wind_Charge">Wind Charge on the minecraft.wiki</a>
+     * @mcversions {@code 1.20.3 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wind_Charge">Wind Charge on the minecraft.wiki</a>
      */
     public static class WindCharge extends AbstractWindCharge {
 
@@ -5362,14 +5220,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Witch">Witch on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Witch">Witch on the minecraft.wiki</a>
      */
     public static class Witch extends Raider {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12}
+         * @mcversions {@code 1.9.4 - 1.12}
          */
         public static final SimpleField<Boolean> IS_AGGRESSIVE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.BOOLEAN)
@@ -5377,14 +5234,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Boolean> IS_DRINKING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 12, EntityDataTypes.BOOLEAN)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> USING_ITEM = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.BOOLEAN)
@@ -5401,12 +5258,12 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
+     * @mcversions {@code 1.9.4 - 26.2}
      */
     public static class WitherBoss extends Monster {
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> FIRST_HEAD_TARGET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 11, EntityDataTypes.INT)
@@ -5414,7 +5271,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> INV = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 17, EntityDataTypes.INT)
@@ -5423,7 +5280,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> INVULNERABILITY_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 14, EntityDataTypes.INT)
@@ -5431,7 +5288,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> SECOND_HEAD_TARGET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 12, EntityDataTypes.INT)
@@ -5439,7 +5296,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TARGET_A = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 14, EntityDataTypes.INT)
@@ -5448,7 +5305,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TARGET_B = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 15, EntityDataTypes.INT)
@@ -5457,7 +5314,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Integer> TARGET_C = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 16, EntityDataTypes.INT)
@@ -5466,7 +5323,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Integer> THIRD_HEAD_TARGET = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.INT)
@@ -5487,9 +5344,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wither_Skeleton">Wither Skeleton on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wither_Skeleton">Wither Skeleton on the minecraft.wiki</a>
      */
     public static class WitherSkeleton extends AbstractSkeleton {
 
@@ -5499,14 +5355,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wither_Skull">Wither Skull on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wither_Skull">Wither Skull on the minecraft.wiki</a>
      */
     public static class WitherSkull extends AbstractHurtingProjectile {
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> DANGEROUS = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 7, EntityDataTypes.BOOLEAN)
@@ -5514,7 +5369,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> INVULNERABLE = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 5, EntityDataTypes.BOOLEAN)
@@ -5529,14 +5384,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wolf">Wolf on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Wolf">Wolf on the minecraft.wiki</a>
      */
     public static class Wolf extends TamableAnimal {
 
         /**
-         * Versions: {@code 1.21.11 - 26.2}
+         * @mcversions {@code 1.21.11 - 26.2}
          */
         public static final SimpleField<Long> ANGER_END_TIME = SimpleField.<Long>builder()
             .addVersionRange(ServerVersion.V_1_21_11, ServerVersion.V_1_21_11, 21, EntityDataTypes.LONG)
@@ -5544,7 +5398,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.12.2}
+         * @mcversions {@code 1.9.4 - 1.12.2}
          */
         public static final SimpleField<Boolean> BEGGING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 14, EntityDataTypes.BOOLEAN)
@@ -5552,7 +5406,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 26.2}
+         * @mcversions {@code 1.9.4 - 26.2}
          */
         public static final SimpleField<Integer> COLLAR_COLOR = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 15, EntityDataTypes.INT)
@@ -5563,7 +5417,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.9.4 - 1.14.4}
+         * @mcversions {@code 1.9.4 - 1.14.4}
          */
         public static final SimpleField<Float> HEALTH = SimpleField.<Float>builder()
             .addVersionRange(ServerVersion.V_1_9_4, ServerVersion.V_1_10, 13, EntityDataTypes.FLOAT)
@@ -5572,7 +5426,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<Boolean> INTERESTED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_16_2, 18, EntityDataTypes.BOOLEAN)
@@ -5581,7 +5435,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.16 - 1.21.9}
+         * @mcversions {@code 1.16 - 1.21.9}
          */
         public static final SimpleField<Integer> REMAINING_ANGER_TIME = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 20, EntityDataTypes.INT)
@@ -5589,7 +5443,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.21.5 - 26.2}
+         * @mcversions {@code 1.21.5 - 26.2}
          */
         public static final SimpleField<WolfSoundVariant> SOUND_VARIANT = SimpleField.<WolfSoundVariant>builder()
             .addVersionRange(ServerVersion.V_1_21_5, ServerVersion.V_1_21_11, 23, EntityDataTypes.WOLF_SOUND_VARIANT)
@@ -5597,7 +5451,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.20.5 - 26.2}
+         * @mcversions {@code 1.20.5 - 26.2}
          */
         public static final SimpleField<WolfVariant> VARIANT = SimpleField.<WolfVariant>builder()
             .addVersionRange(ServerVersion.V_1_20_5, ServerVersion.V_1_21_11, 22, EntityDataTypes.TYPED_WOLF_VARIANT)
@@ -5618,14 +5472,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.16 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zoglin">Zoglin on the minecraft.wiki</a>
+     * @mcversions {@code 1.16 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zoglin">Zoglin on the minecraft.wiki</a>
      */
     public static class Zoglin extends Monster {
 
         /**
-         * Versions: {@code 1.16 - 26.2}
+         * @mcversions {@code 1.16 - 26.2}
          */
         public static final SimpleField<Boolean> BABY = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_16, ServerVersion.V_1_16_2, 15, EntityDataTypes.BOOLEAN)
@@ -5639,9 +5492,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Horse">Zombie Horse on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Horse">Zombie Horse on the minecraft.wiki</a>
      */
     public static class ZombieHorse extends AbstractHorse {
 
@@ -5651,14 +5503,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.21.11 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Nautilus">Zombie Nautilus on the minecraft.wiki</a>
+     * @mcversions {@code 1.21.11 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Nautilus">Zombie Nautilus on the minecraft.wiki</a>
      */
     public static class ZombieNautilus extends AbstractNautilus {
 
         /**
-         * Versions: {@code 1.21.11 - 26.2}
+         * @mcversions {@code 1.21.11 - 26.2}
          */
         public static final SimpleField<ZombieNautilusVariant> VARIANT = SimpleField.<ZombieNautilusVariant>builder()
             .addVersionRange(ServerVersion.V_1_21_11, ServerVersion.V_1_21_11, 20, EntityDataTypes.ZOMBIE_NAUTILUS_VARIANT)
@@ -5672,14 +5523,13 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.11.2 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Villager">Zombie Villager on the minecraft.wiki</a>
+     * @mcversions {@code 1.11.2 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombie_Villager">Zombie Villager on the minecraft.wiki</a>
      */
     public static class ZombieVillager extends Zombie {
 
         /**
-         * Versions: {@code 1.11.2 - 26.2}
+         * @mcversions {@code 1.11.2 - 26.2}
          */
         public static final SimpleField<Boolean> CONVERTING = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_1_11_2, ServerVersion.V_1_12_2, 15, EntityDataTypes.BOOLEAN)
@@ -5689,14 +5539,14 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 1.12.2}
+         * @mcversions {@code 1.12.2}
          */
         public static final SimpleField<Integer> PROFESSION = SimpleField.<Integer>builder()
             .addVersionRange(ServerVersion.V_1_12_2, ServerVersion.V_1_12_2, 16, EntityDataTypes.INT)
             .build();
 
         /**
-         * Versions: {@code 1.14.4 - 26.2}
+         * @mcversions {@code 1.14.4 - 26.2}
          */
         public static final SimpleField<VillagerData> VILLAGER_DATA = SimpleField.<VillagerData>builder()
             .addVersionRange(ServerVersion.V_1_14_4, ServerVersion.V_1_14_4, 18, EntityDataTypes.VILLAGER_DATA)
@@ -5705,7 +5555,7 @@ public final class EntityMetaFields {
             .build();
 
         /**
-         * Versions: {@code 26.1 - 26.2}
+         * @mcversions {@code 26.1 - 26.2}
          */
         public static final SimpleField<Boolean> VILLAGER_FINALIZED = SimpleField.<Boolean>builder()
             .addVersionRange(ServerVersion.V_26_1, ServerVersion.V_26_2, 21, EntityDataTypes.BOOLEAN)
@@ -5721,9 +5571,8 @@ public final class EntityMetaFields {
     }
 
     /**
-     * Versions: {@code 1.9.4 - 26.2}
-     * <br>
-     * <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombified_Piglin">Zombified Piglin on the minecraft.wiki</a>
+     * @mcversions {@code 1.9.4 - 26.2}
+     * @mcwiki <a href="https://minecraft.wiki/w/Java_Edition_protocol/Entity_metadata#Zombified_Piglin">Zombified Piglin on the minecraft.wiki</a>
      */
     public static class ZombifiedPiglin extends Zombie {
 

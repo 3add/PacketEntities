@@ -14,7 +14,7 @@ import dev.threeadd.packetentities.entity.meta.ProtocolEntityMeta;
 import dev.threeadd.packetentities.entity.objectdata.ProtocolObjectData;
 import dev.threeadd.packetentities.entity.viewer.ViewerManager;
 import dev.threeadd.packetentities.entity.viewer.ViewerManagerBuilder;
-import dev.threeadd.packetentities.platform.PlatformWorld;
+import dev.threeadd.packetentities.world.ProtocolWorld;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnknownNullability;
 
@@ -38,7 +38,7 @@ public class ProtocolEntityBuilder {
     @Nullable Float verticalHeadRot;
     // on ground state, TODO expose to api? how should this be handled
     @UnknownNullability
-    PlatformWorld world; // set on build
+    ProtocolWorld world; // set on build
     // attribute state
     @Nullable List<WrapperPlayServerUpdateAttributes.Property> properties;
 
@@ -216,7 +216,7 @@ public class ProtocolEntityBuilder {
      * @throws IllegalArgumentException if this entity's {@link EntityType} isn't a subtype of the stored object data's {@link ProtocolObjectData#getBoundEntityType()}
      * @throws IllegalArgumentException if this entity's {@link EntityType} isn't a subtype of the stored metadata's schema's {@link EntityMetaSchema#getBoundEntityType()}
      */
-    public ProtocolEntity build(PlatformWorld world, Location location) {
+    public ProtocolEntity build(ProtocolWorld world, Location location) {
         this.world = Objects.requireNonNull(world, "world must not be null");
         this.location = Objects.requireNonNull(location, "location must not be null");
         return new ProtocolEntity(this);
@@ -231,7 +231,7 @@ public class ProtocolEntityBuilder {
      * @throws NullPointerException if either argument is null
      * @see ProtocolEntity#spawn()
      */
-    public ProtocolEntity buildAndSpawn(PlatformWorld world, Location location) {
+    public ProtocolEntity buildAndSpawn(ProtocolWorld world, Location location) {
         return build(world, location).spawn();
     }
 

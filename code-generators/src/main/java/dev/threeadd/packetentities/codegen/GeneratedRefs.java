@@ -30,8 +30,8 @@ public final class GeneratedRefs {
     public static final ClassName SCHEMA_REGISTRY = ClassName.get(META_PACKAGE, "EntityMetaSchemaRegistry");
 
     public static final AnnotationSpec API_STATUS_INTERNAL = AnnotationSpec.builder(ApiStatus.Internal.class).build();
-    public static final AnnotationSpec SUPPRESS_WARNINGS_UNUSED = AnnotationSpec.builder(SuppressWarnings.class)
-            .addMember("value", "$S", "unused")
+    public static final AnnotationSpec SUPPRESS_WARNINGS_UNUSED_AND_SPELLING = AnnotationSpec.builder(SuppressWarnings.class)
+            .addMember("value", "{$S, $S}", "unused", "SpellCheckingInspection")
             .build();
 
     private GeneratedRefs() {

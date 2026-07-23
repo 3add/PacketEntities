@@ -10,7 +10,7 @@ import com.github.retrooper.packetevents.wrapper.play.server.*;
 import dev.threeadd.packetentities.PacketEntities;
 import dev.threeadd.packetentities.entity.ProtocolEntity;
 import dev.threeadd.packetentities.entity.meta.protocol.EntityMetaFields;
-import dev.threeadd.packetentities.platform.PlatformWorld;
+import dev.threeadd.packetentities.world.ProtocolWorld;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +27,7 @@ public class EntityWorldStateManager {
 
     public EntityWorldStateManager(ProtocolEntity entity, Location initialLocation,
                                    @Nullable Vector3d initialVelocity, float initialVerticalHeadRot,
-                                   boolean initialOnGround, PlatformWorld initialWorld) {
+                                   boolean initialOnGround, ProtocolWorld initialWorld) {
         this.entity = entity;
         this.worldState = new EntityWorldState(
                 initialLocation.getPosition(), null,
@@ -78,8 +78,8 @@ public class EntityWorldStateManager {
         this.worldState = this.worldState.withVelocity(velocity);
     }
 
-    public void setWorld(PlatformWorld newWorld) {
-        PlatformWorld oldWorld = this.worldState.currentWorld();
+    public void setWorld(ProtocolWorld newWorld) {
+        ProtocolWorld oldWorld = this.worldState.currentWorld();
         if (oldWorld.equals(newWorld)) return;
 
         boolean wasSpawned = this.entity.isSpawned();
@@ -118,7 +118,7 @@ public class EntityWorldStateManager {
     }
 
     private void updatePosition(Vector3d position, float yaw, float pitch,
-                                float verticalHeadRot, boolean onGround, PlatformWorld world) {
+                                float verticalHeadRot, boolean onGround, ProtocolWorld world) {
         updatePosition(this.worldState.syncWith(position, yaw, pitch, verticalHeadRot, onGround, world));
     }
 

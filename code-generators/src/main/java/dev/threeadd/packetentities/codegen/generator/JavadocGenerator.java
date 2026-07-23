@@ -45,24 +45,24 @@ public class JavadocGenerator {
         addVersionRangeDetail(details, node.getSupportedVersions());
         addWikiLinkDetail(details, node.getClassName(), displayName);
 
-        return CodeBlock.join(details, "\n<br>\n");
+        return CodeBlock.join(details, "\n");
     }
 
     public CodeBlock generateFieldJavadoc(FieldNode field, ClassName viewClass) {
         List<CodeBlock> details = new ArrayList<>();
 
         if (viewClass != null) {
-            details.add(CodeBlock.of("Wrapped by view: {@link $T}", viewClass));
+            details.add(CodeBlock.of("@view {@link $T}", viewClass));
         }
         addVersionRangeDetail(details, field.getVersions().keySet());
 
-        return CodeBlock.join(details, "\n<br>\n");
+        return CodeBlock.join(details, "\n");
     }
 
     private void addVersionRangeDetail(List<CodeBlock> details, Set<String> supportedVersions) {
         String range = formatVersionRange(supportedVersions);
         if (!range.isEmpty()) {
-            details.add(CodeBlock.of("Versions: {@code $L}", range));
+            details.add(CodeBlock.of("@mcversions {@code $L}", range));
         }
     }
 
@@ -74,7 +74,7 @@ public class JavadocGenerator {
             return;
         }
 
-        details.add(CodeBlock.of("<a href=\"" + WIKI_PAGE_URL + "#$L\">$L on the minecraft.wiki</a>", wikiAnchor, displayName));
+        details.add(CodeBlock.of("@mcwiki <a href=\"" + WIKI_PAGE_URL + "#$L\">$L on the minecraft.wiki</a>", wikiAnchor, displayName));
     }
 
     private String toWikiAnchor(String className) {

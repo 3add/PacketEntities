@@ -2,7 +2,7 @@ package dev.threeadd.packetentities.velocity;
 
 import com.github.retrooper.packetevents.protocol.player.User;
 import dev.threeadd.packetentities.platform.WorldProvider;
-import dev.threeadd.packetentities.platform.PlatformWorld;
+import dev.threeadd.packetentities.world.ProtocolWorld;
 
 /**
  * The velocity world provider represents worlds using their names,
@@ -18,17 +18,17 @@ public class VelocityWorldProvider implements WorldProvider<String> {
     }
 
     @Override
-    public PlatformWorld provide(User user) {
+    public ProtocolWorld provide(User user) {
         return this.tracker.getWorld(user);
     }
 
     @Override
-    public PlatformWorld provide(String platformWorld) {
-        return PlatformWorld.of(platformWorld);
+    public ProtocolWorld provide(String platformWorld) {
+        return ProtocolWorld.of(platformWorld);
     }
 
     @Override
-    public PlatformWorld provideMainWorld() {
+    public ProtocolWorld provideMainWorld() {
         throw new UnsupportedOperationException("No main world on velocity.");
     }
 

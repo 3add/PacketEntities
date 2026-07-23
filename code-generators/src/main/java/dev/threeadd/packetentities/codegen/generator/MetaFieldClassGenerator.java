@@ -28,7 +28,7 @@ public class MetaFieldClassGenerator {
 
     public JavaFile generate(List<EntityMetaNode> sortedEntities) {
         TypeSpec.Builder outerClassBuilder = TypeSpec.classBuilder(GeneratedRefs.OUTER_CLASS_NAME)
-                .addAnnotation(GeneratedRefs.SUPPRESS_WARNINGS_UNUSED)
+                .addAnnotation(GeneratedRefs.SUPPRESS_WARNINGS_UNUSED_AND_SPELLING)
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addJavadoc("Holds all {@link $T} and {@link $T}, grouped by their respective {@link $T}.\n",
                         GeneratedRefs.FIELD_HOLDER, GeneratedRefs.METADATA_SCHEMA, GeneratedRefs.ENTITY_TYPES);

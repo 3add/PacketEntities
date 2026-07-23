@@ -5,12 +5,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class PacketEntities {
 
-    private static @Nullable Platform<?, ?> platform;
+    private static @Nullable Platform platform;
 
     private PacketEntities() {
     }
 
-    public static void enable(Platform<?, ?> platform) {
+    public static void enable(Platform platform) {
         if (PacketEntities.platform != null) {
             throw new IllegalStateException("PacketEntities is already initialized!");
         }
@@ -33,7 +33,7 @@ public class PacketEntities {
         return platform.getAPI();
     }
 
-    public static Platform<?, ?> getPlatform() {
+    public static Platform getPlatform() {
         if (platform == null) {
             throw new IllegalStateException("PacketEntities has not been initialized");
         }
